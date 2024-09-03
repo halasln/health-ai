@@ -1,0 +1,9 @@
+export {default as View1} from './View1/View1';
+export {default as View2} from './View2/View2';
+export {default as View3} from './View3/View3';
+export {default as View4} from './View4/View4';
+export {default as View5} from './View5/View5';
+export {default as View6} from './View6/View6';
+export {default as View7} from './View7/View7';
+export {default as View8} from './View8/View8';
+export {default as View9} from './View9/View9';

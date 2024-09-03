@@ -1,0 +1,11 @@
+export {default as Auth} from './Auth/Auth';
+export {default as Home} from './Home/Home';
+export {default as Dashboard} from './Dashboard/Dashboard';
+export {default as Profile} from './Profile/Profile';
+export {default as Collector} from './Collector/Collector';
+export {default as Register} from './Register/Register';
+export {default as LogIn} from './LogIn/LogIn';
+export {default as Workout} from './Workout/Workout';
+export {default as Meals} from './Meals/Meals';
+export {default as Rapport} from './Rapport/Rapport';
+export {default as Camera} from './Camera/Camera';
