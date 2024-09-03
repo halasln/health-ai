@@ -1,10 +1,8 @@
-import React from 'react';
-
-import {Image, Text, TouchableOpacity, View} from '@health/wrappers';
-import {Icon} from '@health/components';
+import { Icon } from "@health/components";
+import { Image, Text, TouchableOpacity, View } from "@health/wrappers";
 
 //styles
-import styles from './WorkOutCard.styles';
+import styles from "./WorkOutCard.styles";
 
 const WorkOutCard = ({
   title,
@@ -23,13 +21,14 @@ const WorkOutCard = ({
       style={[
         styles.container,
         style,
-        {backgroundColor: backgroundColor, opacity: opacity},
-      ]}>
+        { backgroundColor: backgroundColor, opacity: opacity },
+      ]}
+    >
       <View style={[styles.details]}>
         <Text style={[styles.text, textstyle]}>{title}</Text>
 
         <View style={[styles.duration]}>
-          <Icon name={'chevron-left'} color="#333" />
+          <Icon name={"chevron-left"} color="#333" />
           <Text style={[styles.time]}>{time} min</Text>
         </View>
       </View>

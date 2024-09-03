@@ -1,43 +1,43 @@
-import React, {useEffect, useState} from 'react';
+import { useEffect, useState } from "react";
 
-import {Pressable, Text, View} from '@health/wrappers';
-import {Input, Title} from '@health/components';
+import { Title } from "@health/components";
+import { Pressable, Text, View } from "@health/wrappers";
 
 //styles
-import styles from './View7.styles';
-import mainStyles from '@health/constants/styles';
-import {useDispatch, useSelector} from 'react-redux';
-import {setInfo} from '@health/redux/info';
+import mainStyles from "@health/constants/styles";
+import { setInfo } from "@health/redux/info";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./View7.styles";
 
 const View7 = () => {
   const [goal, setGoal] = useState(info?.goal);
   const dispatch = useDispatch();
-  const info = useSelector(state => state.info.value);
+  const info = useSelector((state) => state.info.value);
 
   useEffect(() => {
-    dispatch(setInfo({goal: goal}));
+    dispatch(setInfo({ goal: goal }));
     console.log(goal);
   }, [goal]);
-  
+
   const data = [
     {
       id: 1,
-      title: 'Keep weight',
-      subtitle: 'Tone up & feel healthy',
+      title: "Keep weight",
+      subtitle: "Tone up & feel healthy",
     },
     {
       id: 2,
-      title: 'Gain muscle',
-      subtitle: 'Build mass & strength',
+      title: "Gain muscle",
+      subtitle: "Build mass & strength",
     },
     {
       id: 3,
-      title: 'Lose weight',
-      subtitle: 'Get motivated & enerfized',
+      title: "Lose weight",
+      subtitle: "Get motivated & enerfized",
     },
   ];
 
-  const isSelected = item => {
+  const isSelected = (item) => {
     return goal?.id == item.id;
   };
   return (
@@ -56,15 +56,16 @@ const View7 = () => {
                   styles.goalcard,
                   {
                     borderWidth: isSelected(goal) ? 1 : 0,
-                    borderColor: isSelected(goal) ? 'green' : 'white',
+                    borderColor: isSelected(goal) ? "green" : "white",
                   },
                 ]}
                 key={index}
-                onPress={isChecked => {
+                onPress={(isChecked) => {
                   if (isChecked) {
                     setGoal(goal);
                   }
-                }}>
+                }}
+              >
                 <Text style={styles.title}>{goal.title}</Text>
                 <Text style={styles.subtitle}>{goal.subtitle}</Text>
               </Pressable>

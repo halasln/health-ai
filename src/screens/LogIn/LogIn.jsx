@@ -1,54 +1,48 @@
-import React, {useState, useEffect} from 'react';
+import { Button, Input, Title } from "@health/components";
+import { useState } from "react";
 import {
-  View,
-  StatusBar,
-  ScrollView,
-  KeyboardAvoidingView,
   ImageBackground,
-} from 'react-native';
-import {Button, Title, Input} from '@health/components';
+  KeyboardAvoidingView,
+  ScrollView,
+  View,
+} from "react-native";
 
-import mainStyles from '@health/constants/styles';
+import mainStyles from "@health/constants/styles";
 
 //styles
-import styles from './LogIn.styles';
-import assets from '@health/assets';
-import {useDispatch, useSelector} from 'react-redux';
-import {setInfo} from '@health/redux/info';
+import assets from "@health/assets";
+import { setInfo } from "@health/redux/info";
+import { useDispatch } from "react-redux";
+import styles from "./LogIn.styles";
 
-const LogIn = ({navigation}) => {
+const LogIn = ({ navigation }) => {
   const dispatch = useDispatch();
 
-  const info = useSelector(state => state.info.value);
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorPassword, setErrorPassword] = useState('');
-  const [errorUserName, setErrorUserName] = useState('');
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorUserName, setErrorUserName] = useState("");
 
   const login = async () => {
     let checker = true;
     const isValidPassword = password.length >= 6;
 
-    if (userName == '') {
-      setErrorUserName('enter your username');
+    if (userName == "") {
+      setErrorUserName("enter your username");
       checker = false;
     }
 
-    if (password == '' || !isValidPassword) {
-      setErrorPassword('your password empty or invalid');
+    if (password == "" || !isValidPassword) {
+      setErrorPassword("your password empty or invalid");
       checker = false;
     }
 
     if (checker) {
-      // console.log(userName);
-      // console.log(password);
-      dispatch(setInfo({userName: userName}));
-      navigation.navigate('collector');
+      dispatch(setInfo({ userName: userName }));
+      navigation.navigate("collector");
     } else {
-      console.log('Email or Password field is empty');
+      console.log("Email or Password field is empty");
     }
-
-    
   };
 
   return (
@@ -57,22 +51,23 @@ const LogIn = ({navigation}) => {
         <KeyboardAvoidingView behavior="padding" style={styles.loginContainer}>
           <ScrollView
             style={mainStyles.formContainer}
-            contentContainerStyle={styles.loginContainer}>
+            contentContainerStyle={styles.loginContainer}
+          >
             <Title
               title="Welcome back"
               style={[mainStyles.mb20]}
-              titleStyle={[mainStyles.mb10, {marginTop: 70, color: '#fff'}]}
+              titleStyle={[mainStyles.mb10, { marginTop: 70, color: "#fff" }]}
               subtitle="Login to your account"
             />
 
             <Input
               label="Username"
               value={userName}
-              onChange={value => {
+              onChange={(value) => {
                 setUserName(value);
-                setErrorUserName('');
+                setErrorUserName("");
               }}
-              resetInputState={() => setUserName('')}
+              resetInputState={() => setUserName("")}
               resetable
               error={errorUserName}
             />
@@ -82,11 +77,11 @@ const LogIn = ({navigation}) => {
               value={password}
               error={errorPassword}
               secureTextEntry={true}
-              onChange={value => {
+              onChange={(value) => {
                 setPassword(value);
-                setErrorPassword('');
+                setErrorPassword("");
               }}
-              resetInputState={() => setPassword('')}
+              resetInputState={() => setPassword("")}
               resetable
             />
 
@@ -100,7 +95,7 @@ const LogIn = ({navigation}) => {
 
             <Button
               title="Don't have an account? Sign Up"
-              onPress={() => navigation.navigate('register')}
+              onPress={() => navigation.navigate("register")}
             />
           </ScrollView>
         </KeyboardAvoidingView>

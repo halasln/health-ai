@@ -1,12 +1,12 @@
-import React, {useEffect, useRef} from 'react';
-import {Animated, TextInput as RNTextInput} from 'react-native';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { useEffect, useRef } from "react";
+import { Animated, TextInput as RNTextInput } from "react-native";
 
-import {Pressable, View, Text} from '@health/wrappers';
-import {Icon} from '@health/components';
+import { Icon } from "@health/components";
+import { Pressable, Text, View } from "@health/wrappers";
 
 //styles
-import styles from './Input.styles';
+import styles from "./Input.styles";
 
 const Input = ({
   label,
@@ -46,7 +46,7 @@ const Input = ({
   };
 
   useEffect(() => {
-    if (value !== '') {
+    if (value !== "") {
       moveTextTop();
     } else {
       moveTextBottom();
@@ -75,7 +75,7 @@ const Input = ({
           ref={textRef}
           keyboardType={keyboardType}
           secureTextEntry={secureTextEntry}
-          autoCapitalize={'none'}
+          autoCapitalize={"none"}
           value={value}
           onChangeText={onChange}
           blurOnSubmit
@@ -109,8 +109,8 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  label: 'Password',
-  value: '',
+  label: "Password",
+  value: "",
   secureTextEntry: false,
   onChange: () => {},
   onClear: () => {},

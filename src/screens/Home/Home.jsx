@@ -1,24 +1,24 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import {View, Text} from '@health/wrappers';
-import { Icon } from '@health/components';
+import { Icon } from "@health/components";
+import { View } from "@health/wrappers";
 
-import {bottomNavigations} from '@health/navigations';
-import { getCurrentTheme } from 'react-native-theming';
+import { bottomNavigations } from "@health/navigations";
+import { getCurrentTheme } from "react-native-theming";
 const Tab = createBottomTabNavigator();
 
 const Home = () => {
   return (
-    <View style={{height: '100%'}}>
+    <View style={{ height: "100%" }}>
       <Tab.Navigator
         screenOptions={{
           tabBarHideOnKeyboard: true,
-          tabBarItemStyle: {paddingVertical: 5},
+          tabBarItemStyle: { paddingVertical: 5 },
           tabBarActiveTintColor: getCurrentTheme().def.activeTintColor,
           tabBarInactiveTintColor: getCurrentTheme().def.inactiveTintColor,
-        }}>
-        {bottomNavigations.map(route => (
+        }}
+      >
+        {bottomNavigations.map((route) => (
           <Tab.Screen
             key={route.name}
             name={route.name}
@@ -26,7 +26,7 @@ const Home = () => {
             options={{
               headerShown: false,
               tabBarLabel: route.label,
-              tabBarIcon: ({focused, color}) => (
+              tabBarIcon: ({ focused, color }) => (
                 <Icon
                   name={route.icon}
                   color={

@@ -1,26 +1,16 @@
-import React from 'react';
-import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import { Text, View } from "@health/wrappers";
 
-import {Text, View} from '@health/wrappers';
+import mainStyles from "@health/constants/styles";
+import { ImageBackground } from "react-native";
+import styles from "./MealsCard.styles";
 
-import styles from './MealsCard.styles';
-import mainStyles from '@health/constants/styles';
-import {ImageBackground} from 'react-native';
-
-const MealsCard = ({
-  image,
-  calories,
-  imageBackground,
-  title,
-  subtitle,
-  progress,
-  progressColor,
-}) => {
+const MealsCard = ({ image, calories, imageBackground, title, subtitle }) => {
   return (
     <View style={styles.mealsCard}>
       <View style={mainStyles.rowCenterY}>
         <View
-          style={[styles.imageContainer, {backgroundColor: imageBackground}]}>
+          style={[styles.imageContainer, { backgroundColor: imageBackground }]}
+        >
           <ImageBackground
             source={image}
             style={styles.image}

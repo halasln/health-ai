@@ -1,25 +1,16 @@
-import React from 'react';
-import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import { Text, View } from "@health/wrappers";
 
-import {Text, View} from '@health/wrappers';
+import mainStyles from "@health/constants/styles";
+import { ImageBackground } from "react-native";
+import styles from "./HistoryCard.styles";
 
-import styles from './HistoryCard.styles';
-import mainStyles from '@health/constants/styles';
-import {ImageBackground} from 'react-native';
-
-const HistoryCard = ({
-  image,
-  imageBackground,
-  title,
-  subtitle,
-  progress,
-  progressColor,
-}) => {
+const HistoryCard = ({ image, imageBackground, title, subtitle }) => {
   return (
     <View style={styles.historyCard}>
       <View style={mainStyles.rowCenterY}>
         <View
-          style={[styles.imageContainer, {backgroundColor: imageBackground}]}>
+          style={[styles.imageContainer, { backgroundColor: imageBackground }]}
+        >
           <ImageBackground
             source={image}
             style={styles.image}

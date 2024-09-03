@@ -1,16 +1,26 @@
-import React, {useState} from 'react';
+import { useState } from "react";
 
-import {View, MainLayout} from '@health/wrappers';
-import {ProgressCard} from '@health/components';
+import { ProgressCard } from "@health/components";
+import { MainLayout, View } from "@health/wrappers";
 
-import {View1, View2, View3, View4, View5, View6, View7, View8, View9} from './views';
+import {
+  View1,
+  View2,
+  View3,
+  View4,
+  View5,
+  View6,
+  View7,
+  View8,
+  View9,
+} from "./views";
 
 //styles
-import styles from './Collector.styles';
-import {useDispatch} from 'react-redux';
-import {setInfo} from '@health/redux/info';
+import { setInfo } from "@health/redux/info";
+import { useDispatch } from "react-redux";
+import styles from "./Collector.styles";
 
-const Collector = ({navigation}) => {
+const Collector = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const [activeView, setActiveView] = useState(0);
@@ -27,17 +37,17 @@ const Collector = ({navigation}) => {
     <View9 key={9} />,
   ];
 
-  const setView = status => {
-    if (status === 'next') {
+  const setView = (status) => {
+    if (status === "next") {
       if (activeView < views.length - 1) {
-        setActiveView(prevView => prevView + 1);
+        setActiveView((prevView) => prevView + 1);
       } else {
         // write back end code here to submit
-        navigation.navigate('home');
+        navigation.navigate("home");
       }
     } else {
       if (activeView > 0) {
-        setActiveView(prevView => prevView - 1);
+        setActiveView((prevView) => prevView - 1);
       } else {
         dispatch(
           setInfo({
@@ -50,166 +60,166 @@ const Collector = ({navigation}) => {
             foodPractice: null,
             dislikedFoods: [
               {
-                name: 'AVOCADO',
+                name: "AVOCADO",
                 status: false,
               },
               {
-                name: 'BEEF',
+                name: "BEEF",
                 status: false,
               },
 
               {
-                name: 'BREAD',
+                name: "BREAD",
                 status: false,
               },
               {
-                name: 'CARROTS',
+                name: "CARROTS",
                 status: false,
               },
               {
-                name: 'CAULIFLOWER',
+                name: "CAULIFLOWER",
                 status: false,
               },
               {
-                name: 'EGGS',
+                name: "EGGS",
                 status: false,
               },
               {
-                name: 'LAMB',
+                name: "LAMB",
                 status: false,
               },
               {
-                name: 'MUSHROOMS',
+                name: "MUSHROOMS",
                 status: false,
               },
               {
-                name: 'ONION',
+                name: "ONION",
                 status: false,
               },
               {
-                name: 'PEANUTS',
+                name: "PEANUTS",
                 status: false,
               },
               {
-                name: 'BELL PEPPERS',
+                name: "BELL PEPPERS",
                 status: false,
               },
               {
-                name: 'PORK',
+                name: "PORK",
                 status: false,
               },
               {
-                name: 'POTATO',
+                name: "POTATO",
                 status: false,
               },
               {
-                name: 'PROTEIN POWDER',
+                name: "PROTEIN POWDER",
                 status: false,
               },
               {
-                name: 'QUINOA',
+                name: "QUINOA",
                 status: false,
               },
               {
-                name: 'SALMON',
+                name: "SALMON",
                 status: false,
               },
               {
-                name: 'SHRIMP',
+                name: "SHRIMP",
                 status: false,
               },
               {
-                name: 'TOFU',
+                name: "TOFU",
                 status: false,
               },
               {
-                name: 'TUNA',
+                name: "TUNA",
                 status: false,
               },
             ],
             favoriteFoods: [
               {
-                name: 'AVOCADO',
+                name: "AVOCADO",
                 status: false,
               },
               {
-                name: 'BEEF',
+                name: "BEEF",
                 status: false,
               },
 
               {
-                name: 'BREAD',
+                name: "BREAD",
                 status: false,
               },
               {
-                name: 'CARROTS',
+                name: "CARROTS",
                 status: false,
               },
               {
-                name: 'CAULIFLOWER',
+                name: "CAULIFLOWER",
                 status: false,
               },
               {
-                name: 'EGGS',
+                name: "EGGS",
                 status: false,
               },
               {
-                name: 'LAMB',
+                name: "LAMB",
                 status: false,
               },
               {
-                name: 'MUSHROOMS',
+                name: "MUSHROOMS",
                 status: false,
               },
               {
-                name: 'ONION',
+                name: "ONION",
                 status: false,
               },
               {
-                name: 'PEANUTS',
+                name: "PEANUTS",
                 status: false,
               },
               {
-                name: 'BELL PEPPERS',
+                name: "BELL PEPPERS",
                 status: false,
               },
               {
-                name: 'PORK',
+                name: "PORK",
                 status: false,
               },
               {
-                name: 'POTATO',
+                name: "POTATO",
                 status: false,
               },
               {
-                name: 'PROTEIN POWDER',
+                name: "PROTEIN POWDER",
                 status: false,
               },
               {
-                name: 'QUINOA',
+                name: "QUINOA",
                 status: false,
               },
               {
-                name: 'SALMON',
+                name: "SALMON",
                 status: false,
               },
               {
-                name: 'SHRIMP',
+                name: "SHRIMP",
                 status: false,
               },
               {
-                name: 'TOFU',
+                name: "TOFU",
                 status: false,
               },
               {
-                name: 'TUNA',
+                name: "TUNA",
                 status: false,
               },
             ],
             goal: null,
-          }),
+          })
         );
-        navigation.navigate('auth');
+        navigation.navigate("auth");
       }
     }
   };
@@ -219,8 +229,8 @@ const Collector = ({navigation}) => {
       <View>{views[activeView]}</View>
       <ProgressCard
         progress={(activeView / (views.length - 1)) * 100}
-        onMainPress={() => setView('next')}
-        onBackPress={() => setView('prev')}
+        onMainPress={() => setView("next")}
+        onBackPress={() => setView("prev")}
       />
     </MainLayout>
   );

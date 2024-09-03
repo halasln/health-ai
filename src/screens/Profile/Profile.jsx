@@ -1,30 +1,25 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, ScrollView} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {Image, MainLayout} from '@health/wrappers';
-import {Button, Input} from '@health/components';
+import { Button, Input } from "@health/components";
+import { Image, MainLayout } from "@health/wrappers";
+import { useState } from "react";
+import { ScrollView, View } from "react-native";
+import { useSelector } from "react-redux";
 
 //styles
-import styles from './Profile.styles';
-import mainStyles from '@health/constants/styles';
-import assets from '@health/assets';
+import assets from "@health/assets";
+import mainStyles from "@health/constants/styles";
+import styles from "./Profile.styles";
 
 const Profile = () => {
-  const info = useSelector(state => state.info.value);
-  // useEffect(() => {
-  //   console.log('info', info);
-  // });
+  const info = useSelector((state) => state.info.value);
 
   const [age, setAge] = useState(0);
-  const [userName, setUserName] = useState('');
-  const [gender, setGender] = useState('');
-  const [height, setHeight] = useState('');
-  const [weight, setWeight] = useState('');
-  const [allergy, setAllergy] = useState('');
-  const [foodPractice, setFoodPractice] = useState('');
-  const filtereddislikedFoods = info.dislikedFoods.filter(
-    item => item.status === true,
-  );
+  const [userName, setUserName] = useState("");
+  const [gender, setGender] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [allergy, setAllergy] = useState("");
+  const [foodPractice, setFoodPractice] = useState("");
+
   return (
     <MainLayout>
       <ScrollView>
@@ -38,61 +33,55 @@ const Profile = () => {
           </View>
           <Input
             label="userName"
-            resetInputState={() => setUserName('')}
+            resetInputState={() => setUserName("")}
             value={info.userName}
             onChange={setUserName}
           />
           <Input
             label="Age"
             keyboardType="numeric"
-            resetInputState={() => setAge('')}
+            resetInputState={() => setAge("")}
             value={info.age}
             onChange={setAge}
           />
           <Input
             label="Height"
             keyboardType="numeric"
-            resetInputState={() => setHeight('')}
+            resetInputState={() => setHeight("")}
             value={info.height}
             onChange={setHeight}
           />
           <Input
             label="Weight"
             keyboardType="numeric"
-            resetInputState={() => setWeight('')}
+            resetInputState={() => setWeight("")}
             value={info.weight}
             onChange={setWeight}
           />
           <Input
             label="Gender"
             keyboardType="numeric"
-            resetInputState={() => setGender('')}
+            resetInputState={() => setGender("")}
             value={info.gender}
             onChange={setGender}
           />
           <Input
             label="Food Practice"
             keyboardType="numeric"
-            resetInputState={() => setFoodPractice('')}
+            resetInputState={() => setFoodPractice("")}
             value={info.foodPractice.title}
             onChange={setFoodPractice}
           />
           <Input
             label="Allergies"
             keyboardType="numeric"
-            resetInputState={() => setAllergy('')}
+            resetInputState={() => setAllergy("")}
             value={info.allergies.title}
             onChange={setAllergy}
           />
         </View>
 
-        {/* <Text>Disliked Food</Text>
-
-        {filtereddislikedFoods?.map((food, i) => {
-          return <Text>{food.name}</Text>;
-        })} */}
-
-        <Button title={'Edit Profile'} />
+        <Button title={"Edit Profile"} />
       </ScrollView>
     </MainLayout>
   );

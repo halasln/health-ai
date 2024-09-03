@@ -1,21 +1,18 @@
-import React, {useEffect, useState} from 'react';
-import ImagePicker from 'react-native-image-crop-picker';
+import { useEffect, useState } from "react";
+import ImagePicker from "react-native-image-crop-picker";
 
-import {MainLayout, Text, View} from '@health/wrappers';
-import {AppBar, WorkOutCard} from '@health/components';
+import { MainLayout, Text, View } from "@health/wrappers";
 
 //styles
-import styles from './Camera.styles';
-import assets from '@health/assets';
-import {Image, useWindowDimensions} from 'react-native';
-import {useIsFocused} from '@react-navigation/native';
+import { useIsFocused } from "@react-navigation/native";
+import { Image, useWindowDimensions } from "react-native";
 
 const Camera = () => {
   const [image, setImage] = useState(null);
-  const {width} = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const isFoucsed = useIsFocused();
 
-  const postImage = image => {
+  const postImage = (image) => {
     setImage(image);
   };
 
@@ -25,7 +22,7 @@ const Camera = () => {
         width: 300,
         height: 400,
         cropping: true,
-      }).then(image => {
+      }).then((image) => {
         postImage(image);
       });
   }, [isFoucsed]);
@@ -33,10 +30,10 @@ const Camera = () => {
   return (
     <MainLayout>
       {image ? (
-        <View style={{width: width*0.9, height: width,overflow:'hidden'}}>
+        <View style={{ width: width * 0.9, height: width, overflow: "hidden" }}>
           <Image
-            source={{uri: image?.path}}
-            style={{width: '100%', height: '100%',padding:10}}
+            source={{ uri: image?.path }}
+            style={{ width: "100%", height: "100%", padding: 10 }}
           />
         </View>
       ) : (

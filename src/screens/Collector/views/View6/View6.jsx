@@ -1,36 +1,36 @@
-import React, {useState, useEffect} from 'react';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import React, { useState, useEffect } from "react";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-import {View} from '@health/wrappers';
-import {Title} from '@health/components';
+import { View } from "@health/wrappers";
+import { Title } from "@health/components";
 
 //styles
-import mainStyles from '@health/constants/styles';
-import {getCurrentTheme} from 'react-native-theming';
-import {useDispatch, useSelector} from 'react-redux';
-import {setInfo} from '@health/redux/info';
+import mainStyles from "@health/constants/styles";
+import { getCurrentTheme } from "react-native-theming";
+import { useDispatch, useSelector } from "react-redux";
+import { setInfo } from "@health/redux/info";
 
 const View6 = () => {
   const dispatch = useDispatch();
-  const info = useSelector(state => state.info.value);
+  const info = useSelector((state) => state.info.value);
   const [foodPractice, setFoodPractice] = useState(info?.foodPractice);
 
   useEffect(() => {
-    dispatch(setInfo({foodPractice: foodPractice}));
+    dispatch(setInfo({ foodPractice: foodPractice }));
   }, [foodPractice]);
 
   const data = [
     {
       id: 1,
-      title: 'Vegetarian',
+      title: "Vegetarian",
     },
     {
       id: 2,
-      title: 'Non Vegetarian ',
+      title: "Non Vegetarian ",
     },
   ];
 
-  const isSelected = item => {
+  const isSelected = (item) => {
     return foodPractice?.id == item.id;
   };
 
@@ -42,19 +42,18 @@ const View6 = () => {
       />
 
       <View style={mainStyles.mt20}>
-        {data.map(item => (
+        {data.map((item) => (
           <BouncyCheckbox
             key={item.id}
             size={24}
             fillColor={getCurrentTheme().def.icon}
-            style={{marginBottom: 16}}
+            style={{ marginBottom: 16 }}
             text={item.title}
-            textStyle={{textDecorationLine: 'none'}}
-            iconStyle={{backgroundColor: isSelected(item) ? 'green' : 'white'}}
-            // innerIconStyle={styles.checkboxIconInner}
-            // disableBuiltInState
-            // iconComponent={<Icon name="check" size={15} />}
-            onPress={isChecked => {
+            textStyle={{ textDecorationLine: "none" }}
+            iconStyle={{
+              backgroundColor: isSelected(item) ? "green" : "white",
+            }}
+            onPress={(isChecked) => {
               if (isChecked) {
                 setFoodPractice(item);
               }

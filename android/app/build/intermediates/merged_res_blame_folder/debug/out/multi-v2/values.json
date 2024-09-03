@@ -23,20 +23,20 @@
                     }
                 },
                 {
-                    "source": "/Users/hela/Downloads/healthAI-main/android/app/src/main/res/values/strings.xml",
+                    "source": "/Users/hela/Downloads/health-ai/android/app/build/generated/res/resValues/debug/values/gradleResValues.xml",
                     "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "16",
-                        "endColumns": "45",
-                        "endOffsets": "57"
+                        "startLines": "6,8",
+                        "startColumns": "4,4",
+                        "startOffsets": "156,262",
+                        "endColumns": "63,68",
+                        "endOffsets": "215,326"
                     },
                     "to": {
-                        "startLines": "745",
-                        "startColumns": "4",
-                        "startOffsets": "47755",
-                        "endColumns": "45",
-                        "endOffsets": "47796"
+                        "startLines": "707,708",
+                        "startColumns": "4,4",
+                        "startOffsets": "45085,45149",
+                        "endColumns": "63,68",
+                        "endOffsets": "45144,45213"
                     }
                 },
                 {
@@ -56,25 +56,6 @@
                         "endLines": "57,370,371,372,380,381,382,633,6533",
                         "endColumns": "55,58,47,55,74,75,71,65,24",
                         "endOffsets": "3301,24262,24310,24366,25052,25128,25200,41183,369322"
-                    }
-                },
-                {
-                    "source": "/Users/hela/Downloads/healthAI-main/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "54",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "267"
-                    },
-                    "to": {
-                        "startLines": "883",
-                        "startColumns": "4",
-                        "startOffsets": "63897",
-                        "endLines": "886",
-                        "endColumns": "12",
-                        "endOffsets": "64075"
                     }
                 },
                 {
@@ -260,6 +241,25 @@
                     }
                 },
                 {
+                    "source": "/Users/hela/Downloads/health-ai/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "54",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "267"
+                    },
+                    "to": {
+                        "startLines": "883",
+                        "startColumns": "4",
+                        "startOffsets": "63897",
+                        "endLines": "886",
+                        "endColumns": "12",
+                        "endOffsets": "64075"
+                    }
+                },
+                {
                     "source": "/Users/hela/.gradle/caches/transforms-3/50fb421c5eeb58c9cf65552dd3327c5f/transformed/swiperefreshlayout-1.1.0/res/values/values.xml",
                     "from": {
                         "startLines": "2",
@@ -312,6 +312,23 @@
                         "endLines": "24,4485,5706,5790",
                         "endColumns": "60,12,24,24",
                         "endOffsets": "1334,297527,340832,345348"
+                    }
+                },
+                {
+                    "source": "/Users/hela/Downloads/health-ai/android/app/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "45",
+                        "endOffsets": "57"
+                    },
+                    "to": {
+                        "startLines": "745",
+                        "startColumns": "4",
+                        "startOffsets": "47755",
+                        "endColumns": "45",
+                        "endOffsets": "47796"
                     }
                 },
                 {
@@ -369,23 +386,6 @@
                         "endLines": "203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,711,854,855,856,857,858,859,860,861,4502,4509,4518,4527,4536,4542,7234,7256",
                         "endColumns": "89,91,48,58,78,64,65,62,60,56,53,89,88,87,55,70,77,48,69,76,85,87,92,81,66,65,60,84,77,64,66,57,74,60,58,74,60,59,55,50,60,63,60,58,72,68,67,43,125,61,57,48,185,47,45,12,12,12,12,12,12,24,24",
                         "endOffsets": "13071,13163,13212,13271,13350,13415,13481,13544,13605,13662,13716,13806,13895,13983,14039,14110,14188,14237,14307,14384,14470,14558,14651,14733,36664,36730,36791,36876,36954,37019,37086,37144,37219,37280,37339,37414,37475,37535,37591,37642,37703,37767,37828,37887,37960,38029,45408,61817,61943,62005,62063,62112,62298,62346,62392,298327,298748,299294,299838,300298,300674,393097,393980"
-                    }
-                },
-                {
-                    "source": "/Users/hela/Downloads/healthAI-main/android/app/build/generated/res/resValues/debug/values/gradleResValues.xml",
-                    "from": {
-                        "startLines": "6,8",
-                        "startColumns": "4,4",
-                        "startOffsets": "156,262",
-                        "endColumns": "63,68",
-                        "endOffsets": "215,326"
-                    },
-                    "to": {
-                        "startLines": "707,708",
-                        "startColumns": "4,4",
-                        "startOffsets": "45085,45149",
-                        "endColumns": "63,68",
-                        "endOffsets": "45144,45213"
                     }
                 },
                 {

@@ -1,14 +1,13 @@
-import React from 'react';
-import {View, Text} from '@health/wrappers';
+import { View } from "@health/wrappers";
 
 //styles
-import styles from './ProgressBar.styles';
+import styles from "./ProgressBar.styles";
 
-const ProgressBar = ({progress, containerStyle}) => {
+const ProgressBar = ({ progress, containerStyle }) => {
   return (
     <View style={[styles.prograssBarContainer, containerStyle]}>
       <View style={styles.prograssBg}>
-        <View style={[styles.prograssBar, {width: `${progress}%`}]}></View>
+        <View style={[styles.prograssBar, { width: `${progress}%` }]}></View>
       </View>
     </View>
   );

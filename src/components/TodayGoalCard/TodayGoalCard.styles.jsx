@@ -9,7 +9,6 @@ export default StyleSheet.create({
     marginTop: 10,
     marginBottom: 40,
 
-    //shadow
     shadowColor: 'rgba(0, 0, 0, 0.5)',
     shadowRadius: 5,
     shadowOpacity: 0.1,

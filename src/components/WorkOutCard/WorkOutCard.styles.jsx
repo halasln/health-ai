@@ -4,7 +4,6 @@ export default StyleSheet.create({
   container: {
     borderRadius: 16,
     flexDirection: 'row',
-    // opacity: 0.5,
     padding: 16,
     marginBottom:20
   },

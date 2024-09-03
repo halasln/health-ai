@@ -177,7 +177,6 @@ export const infoSlice = createSlice({
   initialState,
   reducers: {
     setInfo: (state, info) => {
-      // console.log("info.payload",info.payload);
       state.value = {...state.value, ...info.payload};
     },
   },

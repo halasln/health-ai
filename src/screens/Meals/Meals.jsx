@@ -1,38 +1,37 @@
-import React from 'react';
-import {ScrollView} from 'react-native';
+import { ScrollView } from "react-native";
 
-import {MainLayout, Text} from '@health/wrappers';
-import {AppBar, MealsCard, WorkOutCard} from '@health/components';
+import { AppBar, MealsCard } from "@health/components";
+import { MainLayout, Text } from "@health/wrappers";
 
 //styles
-import styles from './Meals.styles';
-import assets from '@health/assets';
+import assets from "@health/assets";
+import styles from "./Meals.styles";
 const workout = [
   {
-    title: 'Breakfast',
-    time: '42',
-    subtitle: 'greek yogurt with chopped apples and a splash of maple syrup',
+    title: "Breakfast",
+    time: "42",
+    subtitle: "greek yogurt with chopped apples and a splash of maple syrup",
 
-    calories: '240 Kcal',
-    backgroundColor: '#b9e5ff',
+    calories: "240 Kcal",
+    backgroundColor: "#b9e5ff",
     image: assets.breakFast,
   },
   {
-    title: 'Lunch',
-    time: '15',
-    backgroundColor: '#bfe9d4',
+    title: "Lunch",
+    time: "15",
+    backgroundColor: "#bfe9d4",
     image: assets.lunch,
-    subtitle: 'One serving of avocado Egg Salad',
-    calories: '240 Kcal',
+    subtitle: "One serving of avocado Egg Salad",
+    calories: "240 Kcal",
   },
   {
-    title: 'Dinner',
-    time: '30',
-    backgroundColor: '#ffe9cc',
+    title: "Dinner",
+    time: "30",
+    backgroundColor: "#ffe9cc",
     image: assets.dinner,
     subtitle:
-      'Grilled chicken breast with brown rice, spinach, broccoli, asparagus',
-    calories: '240 Kcal',
+      "Grilled chicken breast with brown rice, spinach, broccoli, asparagus",
+    calories: "240 Kcal",
   },
 ];
 const Meals = () => {
