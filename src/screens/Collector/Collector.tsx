@@ -1,6 +1,6 @@
-import { ProgressCard } from "@health/components";
-import { setInfo } from "@health/redux/info";
-import { MainLayout, View } from "@health/wrappers";
+import { ProgressCard } from "@src/components";
+import { setInfo } from "@src/redux/info";
+import { MainLayout, View } from "@src/wrappers";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./Collector.styles";

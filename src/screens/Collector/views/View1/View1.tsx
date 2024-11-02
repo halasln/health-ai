@@ -1,13 +1,13 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {View, Image, TouchableOpacity} from '@health/wrappers';
-import {Title} from '@health/components';
-import {setInfo} from '@health/redux/info';
+import {View, Image, TouchableOpacity} from '@src/wrappers';
+import {Title} from '@src/components';
+import {setInfo} from '@src/redux/info';
 
 //styles
 import styles from './View1.styles';
-import assets from '@health/assets';
+import assets from '@src/assets';
 
 const View1 = () => {
   const dispatch = useDispatch();

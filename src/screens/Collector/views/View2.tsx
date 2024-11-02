@@ -1,8 +1,8 @@
 import React from 'react';
-import { Input, Title } from '@health/components';
-import mainStyles from '@health/constants/styles';
-import { setInfo } from '@health/redux/info';
-import { View } from '@health/wrappers';
+import { Input, Title } from '@src/components';
+import mainStyles from '@src/constants/styles';
+import { setInfo } from '@src/redux/info';
+import { View } from '@src/wrappers';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 

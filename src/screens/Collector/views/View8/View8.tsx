@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Title } from "@health/components";
-import { setInfo } from "@health/redux/info";
-import { SafeAreaView, Text, TouchableOpacity, View } from "@health/wrappers";
+import { Title } from "@src/components";
+import { setInfo } from "@src/redux/info";
+import { SafeAreaView, Text, TouchableOpacity, View } from "@src/wrappers";
 
 //styles
 import styles from "./View8.styles";

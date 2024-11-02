@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import {ScrollView} from 'react-native';
 
-import {MainLayout, Text} from '@health/wrappers';
-import {AppBar, WorkOutCard} from '@health/components';
+import {MainLayout, Text} from '@src/wrappers';
+import {AppBar, WorkOutCard} from '@src/components';
 
 //styles
 import styles from './Workout.styles';
-import assets from '@health/assets';
+import assets from '@src/assets';
 
 const Workout = () => {
   const [choice, setChoice] = useState('');

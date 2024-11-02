@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {View, Text} from '@health/wrappers';
-import {Icon} from '@health/components';
+import {View, Text} from '@src/wrappers';
+import {Icon} from '@src/components';
 
 import styles from'./CircleIcon.styles'
 

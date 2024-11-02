@@ -1,6 +1,6 @@
-import { Text, View } from "@health/wrappers";
+import { Text, View } from "@src/wrappers";
 
-import mainStyles from "@health/constants/styles";
+import mainStyles from "@src/constants/styles";
 import { ImageBackground } from "react-native";
 import styles from "./MealsCard.styles";
 

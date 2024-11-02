@@ -1,6 +1,5 @@
-import { Text, View } from "@health/wrappers";
-
-import mainStyles from "@health/constants/styles";
+import { Text, View } from "@src/wrappers";
+import mainStyles from "@src/constants/styles";
 import { ImageBackground } from "react-native";
 import styles from "./HistoryCard.styles";
 

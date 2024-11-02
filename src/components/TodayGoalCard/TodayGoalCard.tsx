@@ -1,10 +1,10 @@
 import React from 'react';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 
-import {Text, View} from '@health/wrappers';
+import {Text, View} from '@src/wrappers';
 
 import styles from './TodayGoalCard.styles';
-import mainStyles from '@health/constants/styles';
+import mainStyles from '@src/constants/styles';
 
 const TodayGoalCard = () => {
   const info = [

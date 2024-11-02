@@ -1,4 +1,4 @@
-import { Image, Text, View } from "@health/wrappers";
+import { Image, Text, View } from "@src/wrappers";
 
 //styles
 import styles from "./ImageMessage.styles";

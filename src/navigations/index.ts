@@ -10,7 +10,7 @@ import {
   Camera,
   Register,
   LogIn,
-} from '@health/screens';
+} from '@src/screens';
 
 const navigations = [
   {

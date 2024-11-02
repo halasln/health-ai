@@ -1,5 +1,4 @@
 import {defaultTheme} from './default';
-import {darkAssets} from './assets/darkAssets';
 
 const primary = '#ffffff';
 const white = '#ffffff';
@@ -24,7 +23,9 @@ const greyDark = '#B3B3B3';
 
 export const dark = {
   ...defaultTheme,
-  ...darkAssets,
+  info: {
+    name: 'dark',
+  },
   primary: primary,
   primaryDark: navy,
   screen: navy,

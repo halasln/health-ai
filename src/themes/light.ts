@@ -1,5 +1,4 @@
 import {defaultTheme} from './default';
-import {lightAssets} from './assets/lightAssets';
 
 const primary = '#16AA75';
 const white = '#ffffff';
@@ -25,7 +24,9 @@ const greyDark = '#B3B3B3';
 
 export const light = {
   ...defaultTheme,
-  ...lightAssets,
+  info: {
+    name: 'light',
+  },
   primary: primary,
   primaryDark: navy,
   screen: offWhite,

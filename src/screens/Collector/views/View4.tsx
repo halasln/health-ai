@@ -1,15 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-
-import {View, Text} from '@health/wrappers';
-import {Input, Title} from '@health/components';
-
-//styles
-import styles from './View4.styles';
-import mainStyles from '@health/constants/styles';
-import {getCurrentTheme} from 'react-native-theming';
+import {View, Text} from '@src/wrappers';
+import {Input, Title} from '@src/components';
+import mainStyles from '@src/constants/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { setInfo } from '@health/redux/info';
+import { setInfo } from '@src/redux/info';
+import { theme } from '@src/themes/theme';
 
 const View4 = () => {
 
@@ -56,7 +52,7 @@ const View4 = () => {
           <BouncyCheckbox
             key={item.id}
             size={24}
-            fillColor={getCurrentTheme().def.icon}
+            fillColor={theme?.icon}
             style={{marginBottom: 16}}
             text={item.title}
             textStyle={{textDecorationLine: 'none'}}

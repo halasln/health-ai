@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, View} from '@health/wrappers';
+import {SafeAreaView, View} from '@src/wrappers';
 
 //styles
 import styles from './MainLayout.styles';

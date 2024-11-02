@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import { useEffect, useRef } from "react";
 import { Animated, TextInput as RNTextInput } from "react-native";
 
-import { Icon } from "@health/components";
-import { Pressable, Text, View } from "@health/wrappers";
+import { Icon } from "@src/components";
+import { Pressable, Text, View } from "@src/wrappers";
 
 //styles
 import styles from "./Input.styles";

@@ -1,35 +1,74 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import CryptoJS from 'crypto-js';
+import Config from 'react-native-config';
+import {MMKV} from 'react-native-mmkv';
+import app from './../../app.json';
 
-export const storeData = async (key, value) => {
+const storage = new MMKV({
+  id: `${app?.name}_storage`,
+});
+
+export const setItem = (key: string, value: any) => {
   try {
-    const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem(key, jsonValue);
-  } catch (e) {}
+    const hashedKey = encryptKey(key);
+    const encryptedValue = encryptItem(JSON.stringify(value));
+    storage?.set(hashedKey, encryptedValue);
+  } catch (err) {
+    throw err;
+  }
 };
 
-export const getData = async key => {
+export const getItem = (key: string) => {
   try {
-    const jsonValue = await AsyncStorage.getItem(key);
-    
-    return jsonValue !== null ? JSON.parse(jsonValue) : null;
-  } catch (e) {}
+    const hashedKey = encryptKey(key);
+    const encryptedValue = storage?.getString(hashedKey);
+    return encryptedValue ? JSON.parse(decryptItem(encryptedValue)) : '';
+  } catch (err) {
+    throw err;
+  }
 };
 
-export const removeData = async key => {
+export const removeItem = (key: string) => {
   try {
-    await AsyncStorage.removeItem(key);
-  } catch (e) {}
+    const hashedKey = encryptKey(key);
+    storage?.delete(hashedKey);
+  } catch (err) {
+    throw err;
+  }
 };
 
-export const clearStorage = async key => {
+export const clearStorage = () => {
   try {
-    await AsyncStorage.clear(key);
-  } catch (e) {}
+    storage?.clearAll();
+  } catch (err) {
+    throw err;
+  }
 };
 
-export const mergeData = async (key, value) => {
+const encryptItem = (value: any) => {
   try {
-    const jsonValue = JSON.stringify(value);
-    await AsyncStorage.mergeItem(key, jsonValue);
-  } catch (e) {}
+    return CryptoJS.AES.encrypt(value, Config?.ENCRYPTION_KEY || '').toString();
+  } catch (err) {
+    throw err;
+  }
 };
+
+const decryptItem = (value: string) => {
+  try {
+    const bytes = CryptoJS.AES.decrypt(value, Config?.ENCRYPTION_KEY || '');
+    const decryptedValue = bytes.toString(CryptoJS.enc.Utf8);
+    return decryptedValue;
+  } catch (err) {
+    throw err;
+  }
+};
+
+// Helper function to generate a consistent hash of the key
+const encryptKey = (key: string) => {
+  try {
+    return CryptoJS.SHA256(key).toString();
+  } catch (err) {
+    throw err;
+  }
+};
+
+export default storage;

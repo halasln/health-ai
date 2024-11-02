@@ -1,5 +1,5 @@
-import { Icon } from "@health/components";
-import { Image, Text, TouchableOpacity, View } from "@health/wrappers";
+import { Icon } from "@src/components";
+import { Image, Text, TouchableOpacity, View } from "@src/wrappers";
 
 //styles
 import styles from "./WorkOutCard.styles";

@@ -1,10 +1,10 @@
 import { ScrollView } from "react-native";
 
-import { AppBar, MealsCard } from "@health/components";
-import { MainLayout, Text } from "@health/wrappers";
+import { AppBar, MealsCard } from "@src/components";
+import { MainLayout, Text } from "@src/wrappers";
 
 //styles
-import assets from "@health/assets";
+import assets from "@src/assets";
 import styles from "./Meals.styles";
 const workout = [
   {

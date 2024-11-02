@@ -1,4 +1,4 @@
-import { View } from "@health/wrappers";
+import { View } from "@src/wrappers";
 
 //styles
 import styles from "./ProgressBar.styles";

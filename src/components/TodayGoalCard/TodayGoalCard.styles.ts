@@ -1,4 +1,4 @@
-import { Shadow } from '@health/constants';
+import { Shadow } from '@src/constants';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({

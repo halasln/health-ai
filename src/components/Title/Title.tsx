@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {View, Text} from '@health/wrappers';
+import {View, Text} from '@src/wrappers';
 
 //styles
 import styles from './Title.styles';

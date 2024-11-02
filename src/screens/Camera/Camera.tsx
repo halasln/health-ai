@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ImagePicker from "react-native-image-crop-picker";
 
-import { MainLayout, Text, View } from "@health/wrappers";
+import { MainLayout, Text, View } from "@src/wrappers";
 
 //styles
 import { useIsFocused } from "@react-navigation/native";

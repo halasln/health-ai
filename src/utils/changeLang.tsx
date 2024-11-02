@@ -1,7 +1,7 @@
 import {I18nManager} from 'react-native';
 import RNRestart from 'react-native-restart';
 import i18n from 'i18next';
-import {storeData} from '@health/utils/storage';
+import {storeData} from '@src/utils/storage';
 
 export const changeLanguage = async lang => {
   if (lang == 'ar') {

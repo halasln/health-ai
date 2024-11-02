@@ -1,13 +1,13 @@
-import { Button, Input, Title } from "@health/components";
+import { Button, Input, Title } from "@src/components";
 import { useState } from "react";
 import { ImageBackground, ScrollView, View } from "react-native";
 
-import { setInfo } from "@health/redux/info";
+import { setInfo } from "@src/redux/info";
 import { useDispatch, useSelector } from "react-redux";
 
 //styles
-import assets from "@health/assets";
-import mainStyles from "@health/constants/styles";
+import assets from "@src/assets";
+import mainStyles from "@src/constants/styles";
 import styles from "./Register.styles";
 
 const Register = ({ navigation }) => {

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-import { Title } from "@health/components";
-import { Pressable, Text, View } from "@health/wrappers";
+import { Title } from "@src/components";
+import { Pressable, Text, View } from "@src/wrappers";
 
 //styles
-import mainStyles from "@health/constants/styles";
-import { setInfo } from "@health/redux/info";
+import mainStyles from "@src/constants/styles";
+import { setInfo } from "@src/redux/info";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./View7.styles";
 

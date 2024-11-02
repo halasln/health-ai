@@ -1,22 +1,19 @@
-import { useEffect, useState } from "react";
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-
-import { Title } from "@health/components";
-import { View } from "@health/wrappers";
-
-//styles
-import mainStyles from "@health/constants/styles";
-import { setInfo } from "@health/redux/info";
-import { getCurrentTheme } from "react-native-theming";
-import { useDispatch, useSelector } from "react-redux";
+import {Title} from '@src/components';
+import mainStyles from '@src/constants/styles';
+import {setInfo} from '@src/redux/info';
+import { theme } from '@src/themes/theme';
+import {View} from '@src/wrappers';
+import {useEffect, useState} from 'react';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+import {useDispatch, useSelector} from 'react-redux';
 
 const View5 = () => {
   const dispatch = useDispatch();
-  const info = useSelector((state) => state.info.value);
+  const info = useSelector(state => state.info.value);
   const [allergies, setAllergies] = useState(info?.allergies);
 
   useEffect(() => {
-    dispatch(setInfo({ allergies: allergies }));
+    dispatch(setInfo({allergies: allergies}));
   }, [allergies]);
 
   const data = [
@@ -26,19 +23,19 @@ const View5 = () => {
     },
     {
       id: 2,
-      title: "Egg allergy ",
+      title: 'Egg allergy ',
     },
     {
       id: 3,
-      title: "Fish allergy",
+      title: 'Fish allergy',
     },
     {
       id: 4,
-      title: "None",
+      title: 'None',
     },
   ];
 
-  const isSelected = (item) => {
+  const isSelected = item => {
     return allergies?.id == item.id;
   };
 
@@ -50,18 +47,18 @@ const View5 = () => {
       />
 
       <View style={mainStyles.mt20}>
-        {data.map((item) => (
+        {data.map(item => (
           <BouncyCheckbox
             key={item.id}
             size={24}
-            fillColor={getCurrentTheme().def.icon}
-            style={{ marginBottom: 16 }}
+            fillColor={theme?.icon}
+            style={{marginBottom: 16}}
             text={item.title}
-            textStyle={{ textDecorationLine: "none" }}
+            textStyle={{textDecorationLine: 'none'}}
             iconStyle={{
-              backgroundColor: isSelected(item) ? "green" : "white",
+              backgroundColor: isSelected(item) ? 'green' : 'white',
             }}
-            onPress={(isChecked) => {
+            onPress={isChecked => {
               if (isChecked) {
                 setAllergies(item);
               }

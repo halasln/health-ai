@@ -1,9 +1,10 @@
-import assets from "@health/assets";
-import { AppBar, SummaryCard, TodayGoalCard } from "@health/components";
-import { mainStyles } from "@health/constants/index.jsx";
-import * as axios from "@health/utils/axios";
-import { MainLayout, Text, View } from "@health/wrappers";
+import assets from "@src/assets";
+import { AppBar, SummaryCard, TodayGoalCard } from "@src/components";
+import { mainStyles } from "@src/constants";
+import * as axios from "@src/utils/axios";
+import { MainLayout, Text, View } from "@src/wrappers";
 import { useEffect } from "react";
+import { ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 
 const Dashboard = () => {

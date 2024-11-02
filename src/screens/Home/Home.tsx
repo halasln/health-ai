@@ -1,23 +1,21 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import { Icon } from "@health/components";
-import { View } from "@health/wrappers";
-import { bottomNavigations } from "@health/navigations";
-import { getCurrentTheme } from "react-native-theming";
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Icon} from '@src/components';
+import {bottomNavigations} from '@src/navigations';
+import {theme} from '@src/themes/theme';
+import {View} from '@src/wrappers';
 const Tab = createBottomTabNavigator();
 
 const Home = () => {
   return (
-    <View style={{ height: "100%" }}>
+    <View style={{height: '100%'}}>
       <Tab.Navigator
         screenOptions={{
           tabBarHideOnKeyboard: true,
-          tabBarItemStyle: { paddingVertical: 5 },
-          tabBarActiveTintColor: getCurrentTheme().def.activeTintColor,
-          tabBarInactiveTintColor: getCurrentTheme().def.inactiveTintColor,
-        }}
-      >
-        {bottomNavigations.map((route) => (
+          tabBarItemStyle: {paddingVertical: 5},
+          tabBarActiveTintColor: theme?.activeTintColor,
+          tabBarInactiveTintColor: theme?.inactiveTintColor,
+        }}>
+        {bottomNavigations.map(route => (
           <Tab.Screen
             key={route.name}
             name={route.name}
@@ -25,20 +23,18 @@ const Home = () => {
             options={{
               headerShown: false,
               tabBarLabel: route.label,
-              tabBarIcon: ({ focused, color }) => (
+              tabBarIcon: ({focused, color}) => (
                 <Icon
                   name={route.icon}
                   color={
-                    focused
-                      ? getCurrentTheme().def.activeTintColor
-                      : getCurrentTheme().def.inactiveTintColor
+                    focused ? theme?.activeTintColor : theme?.inactiveTintColor
                   }
                   size={18}
                 />
               ),
               tabBarOptions: {
-                activeTintColor: getCurrentTheme().def.activeTintColor,
-                inactiveTintColor: getCurrentTheme().def.inactiveTintColor,
+                activeTintColor: theme?.activeTintColor,
+                inactiveTintColor: theme?.inactiveTintColor,
               },
             }}
           />

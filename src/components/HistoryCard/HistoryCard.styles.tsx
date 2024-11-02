@@ -1,3 +1,4 @@
+import { theme } from '@src/themes/theme';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
@@ -28,7 +29,7 @@ export default StyleSheet.create({
 
   title: {
     fontSize: 18,
-    fontWeight: '@fontBold',
+    fontWeight: theme?.fontBold,
     marginBottom: 10,
   },
 

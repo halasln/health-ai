@@ -1,16 +1,12 @@
-import {Pressable} from '@health/wrappers';
+import {theme} from '@src/themes/theme';
 import React from 'react';
-import {createThemedComponent} from 'react-native-theming';
 import RNCustomIcon from './CustomIcon';
-
-const ThemedCustomIcon = createThemedComponent(RNCustomIcon, ['color']);
-
 
 const Icon = ({name, color, size, style}) => {
   return (
-    <ThemedCustomIcon
+    <RNCustomIcon
       name={name}
-      color={color ? color : '@icon'}
+      color={color ? color : theme?.icon}
       size={size ?? 25}
       style={style}
     />

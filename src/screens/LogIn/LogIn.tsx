@@ -1,4 +1,4 @@
-import { Button, Input, Title } from "@health/components";
+import { Button, Input, Title } from "@src/components";
 import { useState } from "react";
 import {
   ImageBackground,
@@ -7,11 +7,11 @@ import {
   View,
 } from "react-native";
 
-import mainStyles from "@health/constants/styles";
+import mainStyles from "@src/constants/styles";
 
 //styles
-import assets from "@health/assets";
-import { setInfo } from "@health/redux/info";
+import assets from "@src/assets";
+import { setInfo } from "@src/redux/info";
 import { useDispatch } from "react-redux";
 import styles from "./LogIn.styles";
 

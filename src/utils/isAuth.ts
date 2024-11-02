@@ -1,4 +1,4 @@
-import {getData} from '@health/utils/storage';
+import {getData} from '@src/utils/storage';
 
 export const isAuth = async () => {
   const user = await getData('user');

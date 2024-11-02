@@ -1,12 +1,12 @@
-import { Button, Input } from "@health/components";
-import { Image, MainLayout } from "@health/wrappers";
+import { Button, Input } from "@src/components";
+import { Image, MainLayout } from "@src/wrappers";
 import { useState } from "react";
 import { ScrollView, View } from "react-native";
 import { useSelector } from "react-redux";
 
 //styles
-import assets from "@health/assets";
-import mainStyles from "@health/constants/styles";
+import assets from "@src/assets";
+import mainStyles from "@src/constants/styles";
 import styles from "./Profile.styles";
 
 const Profile = () => {

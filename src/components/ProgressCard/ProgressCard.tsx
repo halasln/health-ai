@@ -1,8 +1,8 @@
-import { Icon, ProgressBar } from "@health/components";
-import { Pressable, Text, View } from "@health/wrappers";
+import { Icon, ProgressBar } from "@src/components";
+import { Pressable, Text, View } from "@src/wrappers";
 
 //styles
-import { mainStyles } from "@health/constants";
+import { mainStyles } from "@src/constants";
 import LinearGradient from "react-native-linear-gradient";
 import styles from "./ProgressCard.styles";
 

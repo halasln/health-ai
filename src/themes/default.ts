@@ -1,7 +1,4 @@
-import commonAssets from './assets/commonAssets';
-
 export const defaultTheme = {
-  ...commonAssets,
   fontXSmall: 10,
   fontSmall: 13,
   fontNormal: 16,

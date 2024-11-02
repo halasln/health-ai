@@ -1,12 +1,12 @@
 import { ImageBackground } from "react-native";
 
-import { Button } from "@health/components";
-import { Text, View } from "@health/wrappers";
+import { Button } from "@src/components";
+import { Text, View } from "@src/wrappers";
 
-import assets from "@health/assets";
+import assets from "@src/assets";
 
 //styles
-import { mainStyles } from "@health/constants";
+import { mainStyles } from "@src/constants";
 import styles from "./Auth.styles";
 
 const Auth = ({ navigation }) => {

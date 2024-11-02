@@ -1,12 +1,12 @@
-import { ActivityCard, AppBar, HistoryCard } from "@health/components/index.js";
-import { MainLayout, Text, View } from "@health/wrappers/index.js";
+import { ActivityCard, AppBar, HistoryCard } from "@src/components";
+import { MainLayout, Text, View } from "@src/wrappers";
 
 //styles
-import assets from "@health/assets";
-import { mainStyles } from "@health/constants/index.jsx";
+import assets from "@src/assets";
+import { mainStyles } from "@src/constants";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { ScrollView } from "react-native-gesture-handler";
-import styles from "./Rapport.styles.js";
+import styles from "./Rapport.styles";
 
 const Rapport = () => {
   const summary = [
