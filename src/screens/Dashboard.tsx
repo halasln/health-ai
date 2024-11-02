@@ -1,13 +1,10 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-
+import assets from "@health/assets";
 import { AppBar, SummaryCard, TodayGoalCard } from "@health/components";
+import { mainStyles } from "@health/constants/index.jsx";
 import * as axios from "@health/utils/axios";
 import { MainLayout, Text, View } from "@health/wrappers";
-//styles
-import assets from "@health/assets";
-import { mainStyles } from "@health/constants/index.jsx";
-import { ScrollView } from "react-native-gesture-handler";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
   const info = useSelector((state) => state.info.value);

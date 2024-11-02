@@ -1,8 +1,9 @@
-import { useState } from "react";
-
 import { ProgressCard } from "@health/components";
+import { setInfo } from "@health/redux/info";
 import { MainLayout, View } from "@health/wrappers";
-
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import styles from "./Collector.styles";
 import {
   View1,
   View2,
@@ -14,11 +15,6 @@ import {
   View8,
   View9,
 } from "./views";
-
-//styles
-import { setInfo } from "@health/redux/info";
-import { useDispatch } from "react-redux";
-import styles from "./Collector.styles";
 
 const Collector = ({ navigation }) => {
   const dispatch = useDispatch();

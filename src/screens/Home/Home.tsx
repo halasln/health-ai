@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Icon } from "@health/components";
 import { View } from "@health/wrappers";
-
 import { bottomNavigations } from "@health/navigations";
 import { getCurrentTheme } from "react-native-theming";
 const Tab = createBottomTabNavigator();

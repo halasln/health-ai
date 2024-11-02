@@ -1,13 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-
-import {View} from '@health/wrappers';
-import {Input, Title} from '@health/components';
-import {setInfo} from '@health/redux/info';
-
-//styles
-import styles from './View2.styles';
+import React from 'react';
+import { Input, Title } from '@health/components';
 import mainStyles from '@health/constants/styles';
+import { setInfo } from '@health/redux/info';
+import { View } from '@health/wrappers';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const View2 = () => {
   const dispatch = useDispatch();
@@ -32,7 +29,7 @@ const View2 = () => {
     if (checker) {
       setErroWeight('');
       setErroHeight('');
-      dispatch(setInfo({weight: weight, height: height}));
+      dispatch(setInfo({ weight: weight, height: height }));
     }
   }, [height, weight]);
 
