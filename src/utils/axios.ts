@@ -1,13 +1,13 @@
 import axios from 'axios';
 import {I18nManager} from 'react-native';
-import {getData} from './storage';
+import { getItem} from './storage';
 
-export const apiLink = 'https://user-api.health.com/api/v6/';
+export const apiLink = 'http:/192.168.100.20:3500/';
 export const apiLink2 = 'https://user-api-2u24875412.health.com/v5/';
 
 export const post = async (url, data = new FormData()) => {
 
-  let token = await getData('user_t');
+  let token = await getItem('user_t');
   let lang = I18nManager.isRTL ? 'ar' : 'en';
 
   token && data.append('token', token);
@@ -33,7 +33,7 @@ export const post = async (url, data = new FormData()) => {
 
 export const put = async (url, data = new FormData()) => {
   
-  let token = await getData('user_t');
+  let token = await getItem('user_t');
   let lang = I18nManager.isRTL ? 'ar' : 'en';
 
   token && data.append('token', token);
@@ -59,7 +59,7 @@ export const put = async (url, data = new FormData()) => {
 
 export const get = async (url, params = {}) => {
   
-  let token = await getData('user_t');
+  let token = await getItem('user_t');
   let lang = I18nManager.isRTL ? 'ar' : 'en';
 
   token && (params.token = token);
@@ -81,7 +81,7 @@ export const get = async (url, params = {}) => {
 
 export const remove = async (url, params = {}) => {
   
-  let token = await getData('user_t');
+  let token = await getItem('user_t');
   let lang = I18nManager.isRTL ? 'ar' : 'en';
 
   token && data.append('token', token);

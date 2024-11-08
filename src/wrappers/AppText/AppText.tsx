@@ -1,8 +1,8 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, TextProps} from 'react-native';
 import styles from './AppText.styles';
 
-const AppText = ({
+const AppText: React.FC<AppTextProps> = ({
   children,
   style,
   numberOfLines,
@@ -36,3 +36,17 @@ const AppText = ({
 };
 
 export default AppText;
+
+interface AppTextProps extends TextProps {
+  children: string;
+  numberOfLines?: number;
+  style?:any;
+  ellipsizeMode?:any;
+  bold?: boolean;
+  xSmall?: boolean;
+  small?: boolean;
+  left?: boolean;
+  right?: boolean;
+  center?: boolean;
+  uppercase?: boolean;
+}

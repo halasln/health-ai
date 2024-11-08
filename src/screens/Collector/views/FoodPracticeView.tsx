@@ -1,22 +1,21 @@
-import {Title} from '@src/components';
+import { Title } from '@src/components';
 import mainStyles from '@src/constants/styles';
-import {setInfo} from '@src/redux/info';
-import {theme} from '@src/themes/theme';
-import {View} from '@src/wrappers';
-import React, {useEffect, useState} from 'react';
+import { useCollector } from '@src/store/useCollector';
+import { theme } from '@src/themes/theme';
+import { View } from '@src/wrappers';
+import React, { useEffect, useState } from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {useDispatch, useSelector} from 'react-redux';
 
-const View6 = () => {
-  const dispatch = useDispatch();
-  const info = useSelector(state => state.info.value);
-  const [foodPractice, setFoodPractice] = useState(info?.foodPractice);
+const FoodPracticeView = () => {
+  const {setInfo, data} = useCollector();
+
+  const [foodPractice, setFoodPractice] = useState(data?.foodPractice);
 
   useEffect(() => {
-    dispatch(setInfo({foodPractice: foodPractice}));
+    setInfo({foodPractice: foodPractice});
   }, [foodPractice]);
 
-  const data = [
+  const data2 = [
     {
       id: 1,
       title: 'Vegetarian',
@@ -39,7 +38,7 @@ const View6 = () => {
       />
 
       <View style={mainStyles.mt20}>
-        {data.map(item => (
+        {data2?.map(item => (
           <BouncyCheckbox
             key={item.id}
             size={24}
@@ -62,4 +61,4 @@ const View6 = () => {
   );
 };
 
-export default View6;
+export default FoodPracticeView;

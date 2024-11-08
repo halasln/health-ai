@@ -1,18 +1,24 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   progressCard: {
     borderRadius: 25,
-    padding: 15,
+    paddingHorizontal: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 10,
+    height: 90,
+
   },
 
-  info:{
+  info: {
     flex: 1,
+  
+
+
   },
+
 
   title: {
     color: '#fff',
@@ -21,6 +27,7 @@ export default StyleSheet.create({
   progress: {
     marginTop: 15,
     color: '#fff',
+
     marginBottom: 5,
   },
 
@@ -33,8 +40,8 @@ export default StyleSheet.create({
     alignItems: 'center',
   },
 
-  mainClickText:{
-    color: '@primary'
+  mainClickText: {
+    color: '@primary',
   },
 
   backClick: {

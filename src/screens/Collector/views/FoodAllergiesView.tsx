@@ -1,22 +1,21 @@
-import {Title} from '@src/components';
+import { Title } from '@src/components';
 import mainStyles from '@src/constants/styles';
-import {setInfo} from '@src/redux/info';
+import { useCollector } from '@src/store/useCollector';
 import { theme } from '@src/themes/theme';
-import {View} from '@src/wrappers';
-import {useEffect, useState} from 'react';
+import { View } from '@src/wrappers';
+import { useEffect, useState } from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {useDispatch, useSelector} from 'react-redux';
 
-const View5 = () => {
-  const dispatch = useDispatch();
-  const info = useSelector(state => state.info.value);
-  const [allergies, setAllergies] = useState(info?.allergies);
+const FoodAllergiesView = () => {
+  const {setInfo, data} = useCollector();
+
+  const [allergies, setAllergies] = useState(data?.allergies);
 
   useEffect(() => {
-    dispatch(setInfo({allergies: allergies}));
+    setInfo({allergies: allergies});
   }, [allergies]);
 
-  const data = [
+  const data2 = [
     {
       id: 1,
       title: "Cow's milk allergy",
@@ -47,7 +46,7 @@ const View5 = () => {
       />
 
       <View style={mainStyles.mt20}>
-        {data.map(item => (
+        {data2?.map(item => (
           <BouncyCheckbox
             key={item.id}
             size={24}
@@ -70,4 +69,4 @@ const View5 = () => {
   );
 };
 
-export default View5;
+export default FoodAllergiesView;

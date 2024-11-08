@@ -1,143 +1,137 @@
-import { Button, Input, Title } from "@src/components";
-import { useState } from "react";
-import { ImageBackground, ScrollView, View } from "react-native";
+import {useNavigation} from '@react-navigation/native';
+import assets from '@src/assets';
+import {Button, Input, Title} from '@src/components';
+import mainStyles from '@src/constants/styles';
+import {useCollector} from '@src/store/useCollector';
+import {registerValidationSchema} from '@src/validations/CollectorValidationSchemas';
+import {Formik} from 'formik';
+import {ImageBackground, ScrollView, View} from 'react-native';
+import styles from './Register.styles';
+const Register = () => {
+  const {setInfo, data} = useCollector();
 
-import { setInfo } from "@src/redux/info";
-import { useDispatch, useSelector } from "react-redux";
-
-//styles
-import assets from "@src/assets";
-import mainStyles from "@src/constants/styles";
-import styles from "./Register.styles";
-
-const Register = ({ navigation }) => {
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errorconfirmPassword, setErrorConfirmPassword] = useState("");
-
-  setErrorPassword;
-
-  const dispatch = useDispatch();
-
-  const info = useSelector((state) => state.info.value);
-  const register = async () => {
-    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const isValidPassword = password.length >= 6;
-    let checker = true;
-    if (!isValidEmail || email == "") {
-      setErrorEmail("check your email");
-      console.log("Email is invalid");
-      checker = false;
-    }
-
-    if (firstName === "") {
-      setErrorFirstName("enter you fullname");
-      checker = false;
-    }
-
-    if (!isValidPassword || password == "") {
-      setErrorPassword("password must be at least 6 characters");
-      checker = false;
-    }
-
-    if (password != confirmPassword || confirmPassword == "") {
-      setErrorConfirmPassword(
-        "your confirm password must be matched with your password"
-      );
-      checker = false;
-    }
-
-    if (checker) {
-      dispatch(setInfo({ userName: firstName }));
-      console.log(firstName);
-      navigation.navigate("collector");
-    }
-  };
+  const navigation = useNavigation();
 
   return (
     <ImageBackground
       source={assets.registerBg}
-      style={mainStyles.screenNoPadding}
-    >
-      <View
-        style={[
-          mainStyles.formContainer,
-          styles.register,
-          { paddingBottom: 40 },
-        ]}
-      >
+      style={mainStyles.screenNoPadding}>
+      <View style={[styles.register, {paddingBottom: 40}]}>
         <ScrollView>
           <Title
             title="Register Now"
             subtitle="Create your account"
             style={[mainStyles.mb10]}
-            titleStyle={[mainStyles.mb10, { marginTop: 70, color: "#fff" }]}
+            titleStyle={[mainStyles.mb10, {marginTop: 70, color: '#fff'}]}
           />
 
-          <Input
-            label="Full Name"
-            value={firstName}
-            onChange={(value) => setFirstName(value)}
-            resetInputState={() => setFirstName("")}
-            resetable
-          />
-
-          <Input
-            label="Email"
-            keyboardType="email-address"
-            value={email}
-            onChange={(value) => {
-              setEmail(value);
-              setErrorEmail("");
+          <Formik
+            initialValues={{
+              firstName: 'hela',
+              email: 'hela@gmail.com',
+              password: '123456',
+              confirmPassword: '123456',
             }}
-            resetInputState={() => setEmail("")}
-            resetable
-            error={errorEmail}
-          />
+            validationSchema={registerValidationSchema}
+            onSubmit={values => {
+              console.log('Form Submitted:', values);
+              // let data = new FormData();
+              // data.append('fullName', values.firstName);
+              // data.append('email', values.email);
+              // data.append('password', values.password);
+              // console.log(data);
 
-          <Input
-            label="Password"
-            value={password}
-            onChange={(value) => {
-              setPassword(value);
-              setErrorPassword("");
-            }}
-            resetInputState={() => setPassword("")}
-            resetable
-            secureTextEntry={true}
-            error={errorPassword}
-          />
+              // post('auth/register', data)
+              //   .then(res => {
+              //     console.log(res.data?.user.first_name);
+              //     dispatch(
+              //       setInfo({
+              //         userName: res?.data?.user?.user_name,
+              //         email: res?.data?.user?.email,
+              //         firstName: res?.data?.user?.first_name,
+              //         lastName: res?.data?.user?.last_name,
+              //       }),
+              //     );
+              //     navigation.navigate('collector');
+              //   })
+              //   .catch(err => {
+              //     console.log(err);
+              //   });
+              navigation.navigate('collector');
+            }}>
+            {({
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              values,
+              errors,
+              touched,
+            }) => (
+              <>
+                <Input
+                  label="Full Name"
+                  value={values.firstName}
+                  onChange={value => handleChange('firstName')(value)}
+                  onBlur={handleBlur('firstName')}
+                  resetInputState={() => handleChange('firstName')('')}
+                  resetable
+                  error={touched.firstName && errors.firstName}
+                />
 
-          <Input
-            label="Confirm password"
-            value={confirmPassword}
-            onChange={(value) => {
-              setConfirmPassword(value);
-              setErrorConfirmPassword("");
-            }}
-            resetInputState={() => setConfirmPassword("")}
-            resetable
-            secureTextEntry={true}
-            error={errorconfirmPassword}
-          />
+                <Input
+                  label="Email"
+                  keyboardType="email-address"
+                  value={values.email}
+                  onChange={value => handleChange('email')(value)}
+                  onBlur={handleBlur('email')}
+                  resetInputState={() => handleChange('email')('')}
+                  resetable
+                  error={touched.email && errors.email}
+                />
 
-          <Button
-            secondary
-            title="Sign Up"
-            outlined
-            style={mainStyles.mb10}
-            onPress={() => register()}
-          />
+                <Input
+                  label="Password"
+                  value={values.password}
+                  onChange={value => handleChange('password')(value)}
+                  onBlur={handleBlur('password')}
+                  resetInputState={() => handleChange('password')('')}
+                  resetable
+                  secureTextEntry={true}
+                  error={touched.password && errors.password}
+                />
 
-          <Button
-            title="Already have an account? Log In"
-            onPress={() => navigation.navigate("login")}
-          />
+                <Input
+                  label="Confirm password"
+                  value={values.confirmPassword}
+                  onChange={value => handleChange('confirmPassword')(value)}
+                  onBlur={handleBlur('confirmPassword')}
+                  resetInputState={() => handleChange('confirmPassword')('')}
+                  resetable
+                  secureTextEntry={true}
+                  error={touched.confirmPassword && errors.confirmPassword}
+                />
+
+                <Button
+                  secondary
+                  title="Sign Up"
+                  outlined
+                  style={mainStyles.mb10}
+                  onPress={handleSubmit}
+                />
+                <Button
+                  title="Already have an account? Log In"
+                  onPress={() => navigation.navigate('login')}
+                />
+              </>
+            )}
+          </Formik>
         </ScrollView>
+        <Button
+          title="Next"
+          onPress={() => {
+            console.log(userInfo);
+          }}
+        />
       </View>
     </ImageBackground>
   );

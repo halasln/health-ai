@@ -5,8 +5,9 @@ import { MainLayout, Text, View } from "@src/wrappers";
 import assets from "@src/assets";
 import { mainStyles } from "@src/constants";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
-import { ScrollView } from "react-native-gesture-handler";
+// import { ScrollView } from "react-native-gesture-handler";
 import styles from "./Rapport.styles";
+import { ScrollView } from "react-native";
 
 const Rapport = () => {
   const summary = [

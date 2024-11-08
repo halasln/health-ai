@@ -1,21 +1,21 @@
-import React, { ReactNode } from 'react';
-import {store} from '@src/redux/store';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {Provider} from 'react-redux';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import React, {ReactNode} from 'react';
 import {SheetProvider} from 'react-native-actions-sheet';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
+const queryClient = new QueryClient();
 const ProvidersWrapper: React.FC<Props> = ({children}) => {
   return (
-    <SafeAreaProvider>
-      <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <SafeAreaProvider>
         <SheetProvider>{children}</SheetProvider>
-      </Provider>
-    </SafeAreaProvider>
+      </SafeAreaProvider>
+    </QueryClientProvider>
   );
 };
 
 export default ProvidersWrapper;
 
-interface Props{
-  children: ReactNode
+interface Props {
+  children: ReactNode;
 }

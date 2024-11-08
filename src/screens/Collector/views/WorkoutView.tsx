@@ -1,23 +1,20 @@
-import React, {useState, useEffect} from 'react';
-import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {View, Text} from '@src/wrappers';
-import {Input, Title} from '@src/components';
+import {Title} from '@src/components';
 import mainStyles from '@src/constants/styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { setInfo } from '@src/redux/info';
-import { theme } from '@src/themes/theme';
+import {useCollector} from '@src/store/useCollector';
+import {theme} from '@src/themes/theme';
+import {View} from '@src/wrappers';
+import React, {useEffect, useState} from 'react';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
-const View4 = () => {
-
-  const dispatch = useDispatch();
-  const info = useSelector(state => state.info.value);
-  const [workout, setWorkout] = useState(info?.workout);
+const WorkoutView = () => {
+  const {setInfo, data} = useCollector();
+  const [workout, setWorkout] = useState(data?.workout);
 
   useEffect(() => {
-    dispatch(setInfo({workout: workout}));
+    setInfo({workout: workout});
   }, [workout]);
 
-  const data = [
+  const data2 = [
     {
       id: 1,
       title: 'Sedentary',
@@ -48,7 +45,7 @@ const View4 = () => {
       />
 
       <View style={mainStyles.mt20}>
-        {data.map(item => (
+        {data2?.map(item => (
           <BouncyCheckbox
             key={item.id}
             size={24}
@@ -57,9 +54,6 @@ const View4 = () => {
             text={item.title}
             textStyle={{textDecorationLine: 'none'}}
             iconStyle={{backgroundColor: isSelected(item) ? 'green' : 'white'}}
-            // innerIconStyle={styles.checkboxIconInner}
-            // disableBuiltInState
-            // iconComponent={<Icon name="check" size={15} />}
             onPress={isChecked => {
               if (isChecked) {
                 setWorkout(item);
@@ -72,4 +66,4 @@ const View4 = () => {
   );
 };
 
-export default View4;
+export default WorkoutView;

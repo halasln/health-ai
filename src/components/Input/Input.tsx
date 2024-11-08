@@ -1,14 +1,13 @@
-import PropTypes from "prop-types";
-import { useEffect, useRef } from "react";
-import { Animated, TextInput as RNTextInput } from "react-native";
+import React, {useEffect, useRef} from 'react';
+import {Animated, TextInput as RNTextInput, TextInputProps} from 'react-native';
 
-import { Icon } from "@src/components";
-import { Pressable, Text, View } from "@src/wrappers";
+import {Icon} from '@src/components';
+import {Pressable, Text, View} from '@src/wrappers';
 
 //styles
-import styles from "./Input.styles";
+import styles from './Input.styles';
 
-const Input = ({
+const Input: React.FC<InputProps> = ({
   label,
   resetInputState,
   value,
@@ -17,6 +16,7 @@ const Input = ({
   error,
   leading,
   secureTextEntry,
+  resetable,
 }) => {
   const moveText = useRef(new Animated.Value(0)).current;
   const textRef = useRef(null);
@@ -46,7 +46,7 @@ const Input = ({
   };
 
   useEffect(() => {
-    if (value !== "") {
+    if (value !== '') {
       moveTextTop();
     } else {
       moveTextBottom();
@@ -75,11 +75,12 @@ const Input = ({
           ref={textRef}
           keyboardType={keyboardType}
           secureTextEntry={secureTextEntry}
-          autoCapitalize={"none"}
+          autoCapitalize={'none'}
           value={value}
           onChangeText={onChange}
           blurOnSubmit
           onEndEditing={inputBlur}
+          resetable={resetable}
           style={
             value?.length > 0
               ? [styles.marginTextInput, styles.textInput]
@@ -99,21 +100,17 @@ const Input = ({
   );
 };
 
-Input.propTypes = {
-  label: PropTypes.string,
-  value: PropTypes.string,
-  secureTextEntry: PropTypes.bool,
-  keyboardType: PropTypes.string,
-  onChange: PropTypes.func,
-  onClear: PropTypes.func,
-};
-
-Input.defaultProps = {
-  label: "Password",
-  value: "",
-  secureTextEntry: false,
-  onChange: () => {},
-  onClear: () => {},
-};
+interface InputProps extends TextInputProps {
+  label: string;
+  value: string | number;
+  secureTextEntry?: boolean;
+  keyboardType?: string;
+  onChange?: (value: any) => void;
+  onClear?: () => void;
+  resetInputState?: () => void;
+  error?: any;
+  leading?: React.ReactNode;
+  resetable?: boolean;
+}
 
 export default Input;

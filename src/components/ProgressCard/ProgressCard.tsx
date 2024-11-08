@@ -1,10 +1,12 @@
-import { Icon, ProgressBar } from "@src/components";
-import { Pressable, Text, View } from "@src/wrappers";
+import {Icon, ProgressBar} from '@src/components';
+import {Pressable, Text, View} from '@src/wrappers';
+import LinearGradient from 'react-native-linear-gradient';
 
 //styles
-import { mainStyles } from "@src/constants";
-import LinearGradient from "react-native-linear-gradient";
-import styles from "./ProgressCard.styles";
+import {mainStyles} from '@src/constants';
+import {useCollector} from '@src/store/useCollector';
+import {useMemo} from 'react';
+import styles from './ProgressCard.styles';
 
 const ProgressCard = ({
   onBackPress,
@@ -13,13 +15,23 @@ const ProgressCard = ({
   backIcon,
   progress,
 }) => {
+  const {data} = useCollector();
+
+  const isDisabled = useMemo(() => {
+    if (data?.step === 0 && !data?.gender) {
+      return true;
+    }
+    if (data?.step === 1 && (!data?.height || !data?.weight)) {
+      return true;
+    }
+  }, [JSON.stringify(data)]);
+
   return (
     <LinearGradient
-      colors={["#16AA75", "#55E1AF"]}
-      start={{ x: 1, y: 0 }}
-      end={{ x: 0, y: 0 }}
-      style={styles.progressCard}
-    >
+      colors={['#16AA75', '#55E1AF']}
+      start={{x: 1, y: 0}}
+      end={{x: 0, y: 0}}
+      style={styles.progressCard}>
       {/* info */}
       <View style={styles.info}>
         <Text style={styles.title}>Your Jurney</Text>
@@ -32,11 +44,13 @@ const ProgressCard = ({
       {/* controls */}
       <View style={mainStyles.row}>
         <Pressable style={styles.backClick} onPress={onBackPress}>
-          <Icon name={backIcon ?? "chevron-left"} color="#fff" />
+          <Icon name={backIcon ?? 'chevron-left'} color="#fff" />
         </Pressable>
+        {/* {!isDisabled && ( */}
         <Pressable style={styles.mainClick} onPress={onMainPress}>
-          <Text style={styles.mainClickText}>{mainText ?? "Next"}</Text>
+          <Text style={styles.mainClickText}>{mainText ?? 'Next'}</Text>
         </Pressable>
+        {/* )} */}
       </View>
     </LinearGradient>
   );
