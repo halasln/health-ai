@@ -1,7 +1,7 @@
 import {Title} from '@src/components';
 import {FoodRes, useFood} from '@src/hooks/useFood';
 import {useCollector} from '@src/store/useCollector';
-import {SafeAreaView, Text, TouchableOpacity, View} from '@src/wrappers';
+import {AppPressable, SafeAreaView, Text, View} from '@src/wrappers';
 import {StyleSheet} from 'react-native';
 
 const DislikedFoodView = () => {
@@ -30,7 +30,7 @@ const DislikedFoodView = () => {
       />
       <View style={styles.listContainer}>
         {foods?.map(item => (
-          <TouchableOpacity
+          <AppPressable
             key={item?.id}
             style={[
               styles.item,
@@ -47,7 +47,7 @@ const DislikedFoodView = () => {
               }>
               {item?.name}
             </Text>
-          </TouchableOpacity>
+          </AppPressable>
         ))}
       </View>
     </SafeAreaView>

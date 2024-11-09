@@ -1,11 +1,9 @@
 import {Icon, ProgressBar} from '@src/components';
-import {Pressable, Text, View} from '@src/wrappers';
-import LinearGradient from 'react-native-linear-gradient';
-
-//styles
 import {mainStyles} from '@src/constants';
 import {useCollector} from '@src/store/useCollector';
+import {AppPressable, Text, View} from '@src/wrappers';
 import {useMemo} from 'react';
+import LinearGradient from 'react-native-linear-gradient';
 import styles from './ProgressCard.styles';
 
 const ProgressCard = ({
@@ -43,13 +41,13 @@ const ProgressCard = ({
 
       {/* controls */}
       <View style={mainStyles.row}>
-        <Pressable style={styles.backClick} onPress={onBackPress}>
+        <AppPressable style={styles.backClick} onPress={onBackPress}>
           <Icon name={backIcon ?? 'chevron-left'} color="#fff" />
-        </Pressable>
+        </AppPressable>
         {/* {!isDisabled && ( */}
-        <Pressable style={styles.mainClick} onPress={onMainPress}>
+        <AppPressable style={styles.mainClick} onPress={onMainPress}>
           <Text style={styles.mainClickText}>{mainText ?? 'Next'}</Text>
-        </Pressable>
+        </AppPressable>
         {/* )} */}
       </View>
     </LinearGradient>

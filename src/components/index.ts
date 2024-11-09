@@ -1,6 +1,6 @@
 export { default as ActivityCard } from "./ActivityCard/ActivityCard";
 export { default as AppBar } from "./AppBar/AppBar";
-export { default as Button } from "./Button/Button";
+export { default as AppButton } from "./AppButton/AppButton";
 export { default as CircleIcon } from "./CircleIcon/CircleIcon";
 export { default as HistoryCard } from "./HistoryCard/HistoryCard";
 export { default as Icon } from "./Icon/Icon";

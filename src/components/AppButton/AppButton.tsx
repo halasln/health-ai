@@ -1,10 +1,8 @@
+import {AppPressable, Text} from '@src/wrappers';
 import LinearGradient from 'react-native-linear-gradient';
-
-import {Text, TouchableOpacity} from '@src/wrappers';
-
 import styles from './Button.styles';
 
-const Button = ({title, onPress, green, secondary, style, textstyle}) => {
+const AppButton = ({title, onPress, green, secondary, style, textstyle}) => {
   const getColor = () => {
     if (green) return ['#16AA75', '#55E1AF'];
     else if (secondary) return ['#807D7D', '#8E8E90'];
@@ -17,7 +15,7 @@ const Button = ({title, onPress, green, secondary, style, textstyle}) => {
   };
 
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
+    <AppPressable activeOpacity={0.8} onPress={onPress}>
       <LinearGradient
         colors={getColor()}
         start={{x: 1, y: 0}}
@@ -32,8 +30,8 @@ const Button = ({title, onPress, green, secondary, style, textstyle}) => {
           {title}
         </Text>
       </LinearGradient>
-    </TouchableOpacity>
+    </AppPressable>
   );
 };
 
-export default Button;
+export default AppButton;

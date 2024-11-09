@@ -1,67 +1,113 @@
+// import {Title} from '@src/components';
+// import mainStyles from '@src/constants/styles';
+// import {useAllergies} from '@src/hooks/useAllergies';
+// import {useCollector} from '@src/store/useCollector';
+// import {theme} from '@src/themes/theme';
+// import {View} from '@src/wrappers';
+// import {useEffect, useState} from 'react';
+// import BouncyCheckbox from 'react-native-bouncy-checkbox';
+
+// const FoodAllergiesView = () => {
+//   const {setInfo, data} = useCollector();
+//   const {data: foodallergies, isFetching} = useAllergies();
+
+//   // const [allergies, setAllergies] = useState(data?.allergies);
+
+//   // useEffect(() => {
+//   //   setInfo({allergies: allergies});
+//   // }, [allergies]);
+
+//   const isSelected = item => {
+//     // return allergies?.id == item.id;
+//     if(data?.allergies?.find(id => id == item?.id)){
+
+//     }
+
+//   };
+
+//   return (
+//     <View>
+//       <Title
+//         title="Food Allergies"
+//         subtitle="Knowning your Food Allergies will lead to develop a better program"
+//       />
+
+//       <View style={mainStyles.mt20}>
+//         {foodallergies?.map(item => (
+//           <BouncyCheckbox
+//             key={item?.id}
+//             size={24}
+//             fillColor={theme?.icon}
+//             style={{marginBottom: 16}}
+//             text={item.name}
+//             textStyle={{textDecorationLine: 'none'}}
+//             // iconStyle={{
+//             //   backgroundColor:data?.allergies?.find(id => id == item?.id) ? 'green' : 'white',
+//             // }}
+//             // onPress={isChecked => {
+//             //   if (isChecked) {
+//             //     setAllergies(item);
+//             //   }
+//             // }}
+//           />
+//         ))}
+//       </View>
+//     </View>
+//   );
+// };
+
+// export default FoodAllergiesView;
+
 import { Title } from '@src/components';
 import mainStyles from '@src/constants/styles';
+import { AllergiesRes, useAllergies } from '@src/hooks/useAllergies';
 import { useCollector } from '@src/store/useCollector';
 import { theme } from '@src/themes/theme';
 import { View } from '@src/wrappers';
-import { useEffect, useState } from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
 const FoodAllergiesView = () => {
   const {setInfo, data} = useCollector();
+  const {data: foodallergies, isFetching} = useAllergies();
 
-  const [allergies, setAllergies] = useState(data?.allergies);
 
-  useEffect(() => {
-    setInfo({allergies: allergies});
-  }, [allergies]);
+  const toggleAllergy = (item:AllergiesRes) => {
+    if (data?.allergies?.includes(item?.id)) {
+      setInfo({
+        allergies: data?.allergies?.filter(id => id !== item?.id),
+      });
+    console.log(item);
 
-  const data2 = [
-    {
-      id: 1,
-      title: "Cow's milk allergy",
-    },
-    {
-      id: 2,
-      title: 'Egg allergy ',
-    },
-    {
-      id: 3,
-      title: 'Fish allergy',
-    },
-    {
-      id: 4,
-      title: 'None',
-    },
-  ];
+    } else {
+      setInfo({
+        allergies: data?.allergies?.length
+         ? [...data?.allergies, item?.id]
+          : [item?.id],
+      });
+      console.log('fo', item?.id);
+    }
 
-  const isSelected = item => {
-    return allergies?.id == item.id;
+    
+
   };
 
   return (
     <View>
       <Title
         title="Food Allergies"
-        subtitle="Knowning your Food Allergies will lead to develop a better program"
+        subtitle="Knowing your Food Allergies will lead to developing a better program"
       />
 
       <View style={mainStyles.mt20}>
-        {data2?.map(item => (
+        {foodallergies?.map(item => (
           <BouncyCheckbox
-            key={item.id}
+            key={item?.id}
             size={24}
             fillColor={theme?.icon}
             style={{marginBottom: 16}}
-            text={item.title}
+            text={item.name}
             textStyle={{textDecorationLine: 'none'}}
-            iconStyle={{
-              backgroundColor: isSelected(item) ? 'green' : 'white',
-            }}
-            onPress={isChecked => {
-              if (isChecked) {
-                setAllergies(item);
-              }
-            }}
+            onPress={() => toggleAllergy(item)}
           />
         ))}
       </View>

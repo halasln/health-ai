@@ -1,9 +1,7 @@
 import {useEffect, useState} from 'react';
 import {ImageBackground} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
-// components
-import {Button} from '@src/components';
+import {AppButton} from '@src/components';
 import {Text, View} from '@src/wrappers';
 
 //styles
@@ -56,12 +54,12 @@ const Auth = () => {
           <Text center bold style={[mainStyles.mb10, {color: '#fff'}]}>
             Have a username?
           </Text>
-          <Button
+          <AppButton
             title="Yes"
             style={mainStyles.mb10}
             onPress={() => navigation.navigate('login')}
           />
-          <Button
+          <AppButton
             secondary
             title="No"
             outlined

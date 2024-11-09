@@ -1,7 +1,7 @@
 import assets from '@src/assets';
-import {Button, Title} from '@src/components';
+import {AppButton, Title} from '@src/components';
 import {useCollector} from '@src/store/useCollector';
-import {Image, TouchableOpacity, View} from '@src/wrappers';
+import {Image, AppPressable, View} from '@src/wrappers';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 const GenderView = () => {
@@ -29,7 +29,7 @@ const GenderView = () => {
         subtitle=" Genders plays a magnficant part in the diet system"
       />
 
-      <Button
+      <AppButton
         title="Next"
         onPress={() => {
           console.log(data);
@@ -38,7 +38,7 @@ const GenderView = () => {
 
       <View style={styles.content}>
         {options.map((option, i) => (
-          <TouchableOpacity
+          <AppPressable
             key={i}
             onPress={() => setInfo({gender: option?.type})}
             style={[
@@ -51,7 +51,7 @@ const GenderView = () => {
               source={option.image}
               resizeMode="contain"
             />
-          </TouchableOpacity>
+          </AppPressable>
         ))}
       </View>
     </View>

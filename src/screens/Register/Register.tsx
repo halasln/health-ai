@@ -1,12 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
 import assets from '@src/assets';
-import {Button, Input, Title} from '@src/components';
+import {Input, Title, AppButton} from '@src/components';
 import mainStyles from '@src/constants/styles';
 import {useCollector} from '@src/store/useCollector';
 import {registerValidationSchema} from '@src/validations/CollectorValidationSchemas';
 import {Formik} from 'formik';
 import {ImageBackground, ScrollView, View} from 'react-native';
 import styles from './Register.styles';
+
 const Register = () => {
   const {setInfo, data} = useCollector();
 
@@ -111,14 +112,14 @@ const Register = () => {
                   error={touched.confirmPassword && errors.confirmPassword}
                 />
 
-                <Button
+                <AppButton
                   secondary
                   title="Sign Up"
                   outlined
                   style={mainStyles.mb10}
                   onPress={handleSubmit}
                 />
-                <Button
+                <AppButton
                   title="Already have an account? Log In"
                   onPress={() => navigation.navigate('login')}
                 />
@@ -126,7 +127,7 @@ const Register = () => {
             )}
           </Formik>
         </ScrollView>
-        <Button
+        <AppButton
           title="Next"
           onPress={() => {
             console.log(userInfo);

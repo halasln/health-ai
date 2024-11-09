@@ -1,7 +1,7 @@
 import {Title} from '@src/components';
 import mainStyles from '@src/constants/styles';
 import {useCollector} from '@src/store/useCollector';
-import {Pressable, Text, View} from '@src/wrappers';
+import {AppPressable, Text, View} from '@src/wrappers';
 import {useEffect, useState} from 'react';
 import {StyleSheet} from 'react-native';
 
@@ -46,7 +46,7 @@ const GoalView = () => {
         {data2 &&
           data2?.map((goal, index) => {
             return (
-              <Pressable
+              <AppPressable
                 style={[
                   styles.goalcard,
                   {
@@ -62,7 +62,7 @@ const GoalView = () => {
                 }}>
                 <Text style={styles.title}>{goal.title}</Text>
                 <Text style={styles.subtitle}>{goal.subtitle}</Text>
-              </Pressable>
+              </AppPressable>
             );
           })}
       </View>

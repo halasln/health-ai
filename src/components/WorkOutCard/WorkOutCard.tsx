@@ -1,5 +1,5 @@
 import { Icon } from "@src/components";
-import { Image, Text, TouchableOpacity, View } from "@src/wrappers";
+import { AppPressable, Image, Text, View } from "@src/wrappers";
 
 //styles
 import styles from "./WorkOutCard.styles";
@@ -15,7 +15,7 @@ const WorkOutCard = ({
   opacity,
 }) => {
   return (
-    <TouchableOpacity
+    <AppPressable
       activeOpacity={0.8}
       onPress={onPress}
       style={[
@@ -34,7 +34,7 @@ const WorkOutCard = ({
       </View>
 
       <Image style={styles.image} source={image} resizeMode="contain" />
-    </TouchableOpacity>
+    </AppPressable>
   );
 };
 

@@ -1,22 +1,18 @@
-import {Button, Input, Title} from '@src/components';
-import {useState} from 'react';
+import assets from '@src/assets';
+import {AppButton, Input, Title} from '@src/components';
+import mainStyles from '@src/constants/styles';
+import {setInfo} from '@src/redux/info';
+import {post} from '@src/utils/axios';
+import {Formik} from 'formik';
 import {
   ImageBackground,
   KeyboardAvoidingView,
   ScrollView,
   View,
 } from 'react-native';
-import * as Yup from 'yup';
-
-import mainStyles from '@src/constants/styles';
-
-//styles
-import assets from '@src/assets';
-import {Formik} from 'formik';
 import {useDispatch} from 'react-redux';
+import * as Yup from 'yup';
 import styles from './LogIn.styles';
-import {post} from '@src/utils/axios';
-import { setInfo } from '@src/redux/info';
 
 const validationSchema = Yup.object({
   userName: Yup.string().required('Please enter your username'),
@@ -112,7 +108,7 @@ const LogIn = ({navigation}) => {
                     error={touched.password && errors.password}
                   />
 
-                  <Button
+                  <AppButton
                     secondary
                     title="Log In"
                     outlined
@@ -120,7 +116,7 @@ const LogIn = ({navigation}) => {
                     onPress={handleSubmit}
                   />
 
-                  <Button
+                  <AppButton
                     title="Don't have an account? Sign Up"
                     onPress={() => navigation.navigate('register')}
                   />

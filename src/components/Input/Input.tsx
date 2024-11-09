@@ -1,10 +1,7 @@
+import {Icon} from '@src/components';
+import {AppPressable, Text, View} from '@src/wrappers';
 import React, {useEffect, useRef} from 'react';
 import {Animated, TextInput as RNTextInput, TextInputProps} from 'react-native';
-
-import {Icon} from '@src/components';
-import {Pressable, Text, View} from '@src/wrappers';
-
-//styles
 import styles from './Input.styles';
 
 const Input: React.FC<InputProps> = ({
@@ -89,9 +86,9 @@ const Input: React.FC<InputProps> = ({
         />
 
         {value ? (
-          <Pressable onPress={resetInputState} style={styles.closeBtn}>
+          <AppPressable onPress={resetInputState} style={styles.closeBtn}>
             <Icon name="times" color="#cccccc" size={16} />
-          </Pressable>
+          </AppPressable>
         ) : null}
       </View>
 
