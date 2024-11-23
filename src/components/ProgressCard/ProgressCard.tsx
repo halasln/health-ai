@@ -2,7 +2,6 @@ import {Icon, ProgressBar} from '@src/components';
 import {mainStyles} from '@src/constants';
 import {useCollector} from '@src/store/useCollector';
 import {AppPressable, Text, View} from '@src/wrappers';
-import {useMemo} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './ProgressCard.styles';
 
@@ -13,16 +12,7 @@ const ProgressCard = ({
   backIcon,
   progress,
 }) => {
-  const {data} = useCollector();
-
-  const isDisabled = useMemo(() => {
-    if (data?.step === 0 && !data?.gender) {
-      return true;
-    }
-    if (data?.step === 1 && (!data?.height || !data?.weight)) {
-      return true;
-    }
-  }, [JSON.stringify(data)]);
+  const {data, isDisabled} = useCollector();
 
   return (
     <LinearGradient
@@ -45,7 +35,10 @@ const ProgressCard = ({
           <Icon name={backIcon ?? 'chevron-left'} color="#fff" />
         </AppPressable>
         {/* {!isDisabled && ( */}
-        <AppPressable style={styles.mainClick} onPress={onMainPress}>
+        <AppPressable
+          style={[styles.mainClick, {opacity: isDisabled ? 0.5 : 1}]}
+          onPress={isDisabled ? null : onMainPress}
+          disabled={isDisabled}>
           <Text style={styles.mainClickText}>{mainText ?? 'Next'}</Text>
         </AppPressable>
         {/* )} */}

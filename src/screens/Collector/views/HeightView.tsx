@@ -1,13 +1,22 @@
-import {Input, Title} from '@src/components';
+import { Input, Title } from '@src/components';
 import mainStyles from '@src/constants/styles';
-import {useCollector} from '@src/store/useCollector';
-import {heightValidationSchema} from '@src/validations/CollectorValidationSchemas';
-import {View} from '@src/wrappers';
-import {Formik} from 'formik';
-import React, {useEffect} from 'react';
+import { useCollector } from '@src/store/useCollector';
+import { heightValidationSchema } from '@src/validations/CollectorValidationSchemas';
+import { View } from '@src/wrappers';
+import { Formik } from 'formik';
+import React, { useEffect } from 'react';
 
 const HeightView = () => {
-  const {setInfo, data} = useCollector();
+  const {setInfo, data,setIsDisabled} = useCollector();
+  useEffect(() => {
+    
+    if (data?.height && data?.weight) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [data?.gender]);
+
 
   return (
     <View>
@@ -18,8 +27,8 @@ const HeightView = () => {
 
       <Formik
         initialValues={{
-          height: 0,
-          weight: 0,
+          height: data?.height || 0,
+          weight: data?.weight || 0,
         }}
         validationSchema={heightValidationSchema}
         onSubmit={values => {
@@ -51,9 +60,9 @@ const HeightView = () => {
               <View style={mainStyles.mt20}>
                 <Input
                   label="Height"
-                  keyboardType="numeric"
+              keyboardType='number-pad'
                   value={values.height}
-                  onChange={value => handleChange('height')(value)}
+                  onChangeText={value => handleChange('height')(value)}
                   onBlur={handleBlur('height')}
                   resetInputState={() => handleChange('height')('')}
                   resetable
@@ -63,7 +72,7 @@ const HeightView = () => {
                   label="Weight"
                   keyboardType="numeric"
                   value={values.weight}
-                  onChange={value => handleChange('weight')(value)}
+                  onChangeText={value => handleChange('weight')(value)}
                   onBlur={handleBlur('weight')}
                   resetInputState={() => handleChange('weight')('')}
                   resetable

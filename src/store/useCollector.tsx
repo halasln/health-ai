@@ -21,11 +21,15 @@ const initialValues = {
 export const useCollector = create<CollectorState>()(set => ({
   data: initialValues,
   setInfo: data => set(state => ({data: {...state?.data, ...data}})),
+  isDisabled: true,
+  setIsDisabled: value => set(() => ({isDisabled: value})),
 }));
 
 interface CollectorState {
   data: InitialState;
   setInfo: (data: InitialState) => void;
+  isDisabled: boolean;
+  setIsDisabled: (value: boolean) => void;
 }
 
 interface InitialState {

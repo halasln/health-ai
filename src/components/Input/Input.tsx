@@ -7,13 +7,11 @@ import styles from './Input.styles';
 const Input: React.FC<InputProps> = ({
   label,
   resetInputState,
-  value,
-  keyboardType,
-  onChange,
   error,
   leading,
-  secureTextEntry,
+  value,
   resetable,
+  ...props
 }) => {
   const moveText = useRef(new Animated.Value(0)).current;
   const textRef = useRef(null);
@@ -70,12 +68,8 @@ const Input: React.FC<InputProps> = ({
         <View>{leading}</View>
         <RNTextInput
           ref={textRef}
-          keyboardType={keyboardType}
-          secureTextEntry={secureTextEntry}
+          {...props}
           autoCapitalize={'none'}
-          value={value}
-          onChangeText={onChange}
-          blurOnSubmit
           onEndEditing={inputBlur}
           resetable={resetable}
           style={
@@ -99,15 +93,12 @@ const Input: React.FC<InputProps> = ({
 
 interface InputProps extends TextInputProps {
   label: string;
-  value: string | number;
-  secureTextEntry?: boolean;
-  keyboardType?: string;
-  onChange?: (value: any) => void;
   onClear?: () => void;
   resetInputState?: () => void;
   error?: any;
   leading?: React.ReactNode;
   resetable?: boolean;
+  
 }
 
 export default Input;

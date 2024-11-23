@@ -1,26 +1,36 @@
 import assets from '@src/assets';
-import {AppButton, Title} from '@src/components';
+import {Title} from '@src/components';
 import {useCollector} from '@src/store/useCollector';
-import {Image, AppPressable, View} from '@src/wrappers';
-import React from 'react';
+import {AppPressable, Image, View} from '@src/wrappers';
+import React, {useEffect} from 'react';
 import {StyleSheet} from 'react-native';
-const GenderView = () => {
-  const {setInfo, data} = useCollector();
 
-  const options = [
-    {
-      image: assets.male,
-      type: 'Male',
-      color: '',
-      marginEnd: 10,
-    },
-    {
-      image: assets.female,
-      type: 'Female',
-      color: '',
-      marginEnd: 0,
-    },
-  ];
+const options = [
+  {
+    image: assets.male,
+    type: 'Male',
+    color: '',
+    marginEnd: 10,
+  },
+  {
+    image: assets.female,
+    type: 'Female',
+    color: '',
+    marginEnd: 0,
+  },
+];
+
+const GenderView = () => {
+  const {setInfo, data, setIsDisabled} = useCollector();
+
+  useEffect(() => {
+    
+    if (data?.gender) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [data?.gender]);
 
   return (
     <View>
@@ -28,7 +38,6 @@ const GenderView = () => {
         title="What is your gender?"
         subtitle=" Genders plays a magnficant part in the diet system"
       />
-
 
       <View style={styles.content}>
         {options.map((option, i) => (
