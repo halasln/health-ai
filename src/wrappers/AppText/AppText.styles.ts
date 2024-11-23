@@ -1,22 +1,23 @@
+import { theme } from '@src/themes/theme';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   text: {
     fontSize: 16,
-    fontWeight: '@fontRegular',
-    color: '@text',
+    fontWeight: theme?.fontRegular,
+    color: theme?.text,
   },
 
   bold: {
-    fontWeight: '@fontBold',
+    fontWeight: theme?.fontBold,
   },
 
   xSmall: {
-    fontSize: '@fontXSmall',
+    fontSize: theme?.fontXSmall,
   },
 
   small: {
-    fontSize: '@fontSmall',
+    fontSize: theme?.fontSmall,
   },
 
   left: {
