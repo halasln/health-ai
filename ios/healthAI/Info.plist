@@ -39,6 +39,9 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
+	</array><key>UIAppFonts</key>
+	<array> 
+	<string>Font-Awesome-5-Pro-Light.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

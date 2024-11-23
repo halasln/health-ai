@@ -1,8 +1,8 @@
 import {Title} from '@src/components';
 import {FoodRes, useFood} from '@src/hooks/useFood';
 import {useCollector} from '@src/store/useCollector';
-import {SafeAreaView, Text, AppPressable, View} from '@src/wrappers';
-import {StyleSheet} from 'react-native';
+import {AppPressable, SafeAreaView, Text, View} from '@src/wrappers';
+import {ActivityIndicator, StyleSheet} from 'react-native';
 
 const FavoriteFoodView = () => {
   const {setInfo, data} = useCollector();
@@ -27,28 +27,35 @@ const FavoriteFoodView = () => {
     <SafeAreaView style={styles.container}>
       <Title title="Your Favorite food" subtitle="Choose your favorite food " />
       <View style={styles.listContainer}>
-        {foods
-          ?.filter(item => !data?.dislikedFoods?.includes(item.id))
-          ?.map(item => (
-            <AppPressable
-              key={item?.id}
-              style={[
-                styles.item,
-                data?.favoriteFoods?.find(id => id == item?.id)
-                  ? styles.selectedItem
-                  : '',
-              ]}
-              onPress={() => onItemPress(item)}>
-              <Text
-                style={
+        {!isFetching ? (
+          foods
+            ?.filter(item => !data?.dislikedFoods?.includes(item.id))
+            ?.map(item => (
+              <AppPressable
+                key={item?.id}
+                style={[
+                  styles.item,
                   data?.favoriteFoods?.find(id => id == item?.id)
-                    ? styles.selectedText
-                    : ''
-                }>
-                {item?.name}
-              </Text>
-            </AppPressable>
-          ))}
+                    ? styles.selectedItem
+                    : '',
+                ]}
+                onPress={() => onItemPress(item)}>
+                <Text
+                  style={
+                    data?.favoriteFoods?.find(id => id == item?.id)
+                      ? styles.selectedText
+                      : ''
+                  }>
+                  {item?.name}
+                </Text>
+              </AppPressable>
+            ))
+        ) : (
+          <View
+            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+            <ActivityIndicator size="large" color="black" />
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );

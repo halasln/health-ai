@@ -29,12 +29,6 @@ const GenderView = () => {
         subtitle=" Genders plays a magnficant part in the diet system"
       />
 
-      <AppButton
-        title="Next"
-        onPress={() => {
-          console.log(data);
-        }}
-      />
 
       <View style={styles.content}>
         {options.map((option, i) => (

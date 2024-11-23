@@ -1,40 +1,19 @@
 import {Title} from '@src/components';
 import mainStyles from '@src/constants/styles';
+import {FitnessGoalsRes, useFitnessGoals} from '@src/hooks/useFitnessGoals';
 import {useCollector} from '@src/store/useCollector';
 import {AppPressable, Text, View} from '@src/wrappers';
-import {useEffect, useState} from 'react';
-import {StyleSheet} from 'react-native';
+import {ActivityIndicator, StyleSheet} from 'react-native';
 
 const GoalView = () => {
   const {setInfo, data} = useCollector();
-  const [goal, setGoal] = useState(data?.goal);
+  const {data: fitnessGoals, isFetching} = useFitnessGoals();
 
-  useEffect(() => {
-    setInfo({goal: goal});
-    console.log(goal);
-  }, [goal]);
-
-  const data2 = [
-    {
-      id: 1,
-      title: 'Keep weight',
-      subtitle: 'Tone up & feel healthy',
-    },
-    {
-      id: 2,
-      title: 'Gain muscle',
-      subtitle: 'Build mass & strength',
-    },
-    {
-      id: 3,
-      title: 'Lose weight',
-      subtitle: 'Get motivated & enerfized',
-    },
-  ];
-
-  const isSelected = item => {
-    return goal?.id == item.id;
+  const chooseGoal = (goal: FitnessGoalsRes) => {
+    setInfo({goal: goal?.id});
+    console.log(data?.goal);
   };
+
   return (
     <View>
       <Title
@@ -43,28 +22,30 @@ const GoalView = () => {
       />
 
       <View style={mainStyles.mt20}>
-        {data2 &&
-          data2?.map((goal, index) => {
+        {!isFetching ? (
+          fitnessGoals?.map(goal => {
             return (
               <AppPressable
                 style={[
                   styles.goalcard,
                   {
-                    borderWidth: isSelected(goal) ? 1 : 0,
-                    borderColor: isSelected(goal) ? 'green' : 'white',
+                    borderWidth: data?.goal == goal?.id ? 1 : 0,
+                    borderColor: data?.goal == goal?.id ? 'green' : 'white',
                   },
                 ]}
-                key={index}
-                onPress={isChecked => {
-                  if (isChecked) {
-                    setGoal(goal);
-                  }
-                }}>
+                key={goal.id}
+                onPress={() => chooseGoal(goal)}>
                 <Text style={styles.title}>{goal.title}</Text>
                 <Text style={styles.subtitle}>{goal.subtitle}</Text>
               </AppPressable>
             );
-          })}
+          })
+        ) : (
+          <View
+            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+            <ActivityIndicator size="large" color="black" />
+          </View>
+        )}
       </View>
     </View>
   );

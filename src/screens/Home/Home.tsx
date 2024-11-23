@@ -25,7 +25,7 @@ const Home = () => {
               tabBarLabel: route.label,
               tabBarIcon: ({focused, color}) => (
                 <Icon
-                  name={route.icon}
+                  name={route?.icon}
                   color={
                     focused ? theme?.activeTintColor : theme?.inactiveTintColor
                   }

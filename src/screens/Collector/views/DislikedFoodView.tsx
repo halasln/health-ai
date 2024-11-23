@@ -2,7 +2,7 @@ import {Title} from '@src/components';
 import {FoodRes, useFood} from '@src/hooks/useFood';
 import {useCollector} from '@src/store/useCollector';
 import {AppPressable, SafeAreaView, Text, View} from '@src/wrappers';
-import {StyleSheet} from 'react-native';
+import {ActivityIndicator, StyleSheet} from 'react-native';
 
 const DislikedFoodView = () => {
   const {setInfo, data} = useCollector();
@@ -29,26 +29,33 @@ const DislikedFoodView = () => {
         subtitle="Choose your disliked food favorite"
       />
       <View style={styles.listContainer}>
-        {foods?.map(item => (
-          <AppPressable
-            key={item?.id}
-            style={[
-              styles.item,
-              data?.dislikedFoods?.find(id => id == item?.id)
-                ? styles.selectedItem
-                : '',
-            ]}
-            onPress={() => onItemPress(item)}>
-            <Text
-              style={
+        {!isFetching ? (
+          foods?.map(item => (
+            <AppPressable
+              key={item?.id}
+              style={[
+                styles.item,
                 data?.dislikedFoods?.find(id => id == item?.id)
-                  ? styles.selectedText
-                  : ''
-              }>
-              {item?.name}
-            </Text>
-          </AppPressable>
-        ))}
+                  ? styles.selectedItem
+                  : '',
+              ]}
+              onPress={() => onItemPress(item)}>
+              <Text
+                style={
+                  data?.dislikedFoods?.find(id => id == item?.id)
+                    ? styles.selectedText
+                    : ''
+                }>
+                {item?.name}
+              </Text>
+            </AppPressable>
+          ))
+        ) : (
+          <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
+            <ActivityIndicator size="large" color="black"
+             />
+          </View>
+        )}
       </View>
     </SafeAreaView>
   );

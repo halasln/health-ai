@@ -62,12 +62,7 @@ const AgeView = () => {
         }}
       </Formik>
 
-      <AppButton
-        title="Next"
-        onPress={() => {
-          console.log(data);
-        }}
-      />
+   
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import {AppButton, Input, Title} from '@src/components';
+import {Input, Title} from '@src/components';
 import mainStyles from '@src/constants/styles';
 import {useCollector} from '@src/store/useCollector';
 import {heightValidationSchema} from '@src/validations/CollectorValidationSchemas';
@@ -74,15 +74,6 @@ const HeightView = () => {
           );
         }}
       </Formik>
-
-      {/* Next button, if you want manual navigation option */}
-      <AppButton
-        title="Next"
-        onPress={() => {
-          console.log(data?.weight, data?.height);
-          console.log(data);
-        }}
-      />
     </View>
   );
 };
