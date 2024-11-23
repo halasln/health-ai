@@ -33,49 +33,49 @@ const Profile = () => {
             label="userName"
             resetInputState={() => setUserName('')}
             value={data?.username}
-            onChange={setUserName}
+            onChangeText={setUserName}
           />
           <Input
             label="Age"
             keyboardType="numeric"
             resetInputState={() => setAge('')}
             value={data?.age}
-            onChange={setAge}
+            onChangeText={setAge}
           />
           <Input
             label="Height"
             keyboardType="numeric"
             resetInputState={() => setHeight('')}
             value={data?.height}
-            onChange={setHeight}
+            onChangeText={setHeight}
           />
           <Input
             label="Weight"
             keyboardType="numeric"
             resetInputState={() => setWeight('')}
             value={data?.weight}
-            onChange={setWeight}
+            onChangeText={setWeight}
           />
           <Input
             label="Gender"
             keyboardType="numeric"
             resetInputState={() => setGender('')}
             value={data?.gender}
-            onChange={setGender}
+            onChangeText={setGender}
           />
           <Input
             label="Food Practice"
             keyboardType="numeric"
             resetInputState={() => setFoodPractice('')}
             value={data?.foodPractice}
-            onChange={setFoodPractice}
+            onChangeText={setFoodPractice}
           />
           <Input
             label="Allergies"
             keyboardType="numeric"
             resetInputState={() => setAllergy('')}
             value={data?.allergies}
-            onChange={setAllergy}
+            onChangeText={setAllergy}
           />
         </View>
 

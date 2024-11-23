@@ -45,9 +45,9 @@ const AgeView = () => {
               <View style={mainStyles.mt20}>
                 <Input
                   label="Age"
-                  keyboardType="numeric"
+                  keyboardType="number-pad"
                   value={values.age}
-                  onChange={value => {
+                  onChangeText={value => {
                     handleChange('age')(value);
                     setFieldTouched('age', true, false);
                   }}
@@ -61,8 +61,6 @@ const AgeView = () => {
           );
         }}
       </Formik>
-
-   
     </View>
   );
 };

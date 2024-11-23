@@ -90,7 +90,7 @@ const LogIn = ({navigation}) => {
                   <Input
                     label="Username"
                     value={values.userName}
-                    onChange={value => handleChange('userName')(value)}
+                    onChangeText={value => handleChange('userName')(value)}
                     onBlur={handleBlur('userName')}
                     resetInputState={() => handleChange('userName')('')}
                     resetable
@@ -101,7 +101,7 @@ const LogIn = ({navigation}) => {
                     label="Password"
                     value={values.password}
                     secureTextEntry={true}
-                    onChange={value => handleChange('password')(value)}
+                    onChangeText={value => handleChange('password')(value)}
                     onBlur={handleBlur('password')}
                     resetInputState={() => handleChange('password')('')}
                     resetable

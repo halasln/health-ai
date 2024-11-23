@@ -72,7 +72,7 @@ const Register = () => {
                 <Input
                   label="Full Name"
                   value={values.firstName}
-                  onChange={value => handleChange('firstName')(value)}
+                  onChangeText={value => handleChange('firstName')(value)}
                   onBlur={handleBlur('firstName')}
                   resetInputState={() => handleChange('firstName')('')}
                   resetable
@@ -83,7 +83,7 @@ const Register = () => {
                   label="Email"
                   keyboardType="email-address"
                   value={values.email}
-                  onChange={value => handleChange('email')(value)}
+                  onChangeText={value => handleChange('email')(value)}
                   onBlur={handleBlur('email')}
                   resetInputState={() => handleChange('email')('')}
                   resetable
@@ -93,7 +93,7 @@ const Register = () => {
                 <Input
                   label="Password"
                   value={values.password}
-                  onChange={value => handleChange('password')(value)}
+                  onChangeText={value => handleChange('password')(value)}
                   onBlur={handleBlur('password')}
                   resetInputState={() => handleChange('password')('')}
                   resetable
@@ -104,7 +104,7 @@ const Register = () => {
                 <Input
                   label="Confirm password"
                   value={values.confirmPassword}
-                  onChange={value => handleChange('confirmPassword')(value)}
+                  onChangeText={value => handleChange('confirmPassword')(value)}
                   onBlur={handleBlur('confirmPassword')}
                   resetInputState={() => handleChange('confirmPassword')('')}
                   resetable

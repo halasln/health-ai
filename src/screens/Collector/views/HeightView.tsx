@@ -70,7 +70,8 @@ const HeightView = () => {
                 />
                 <Input
                   label="Weight"
-                  keyboardType="numeric"
+                  keyboardType='number-pad'
+                
                   value={values.weight}
                   onChangeText={value => handleChange('weight')(value)}
                   onBlur={handleBlur('weight')}
