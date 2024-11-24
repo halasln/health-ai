@@ -1,11 +1,11 @@
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import assets from '@src/assets';
-import {Input, Title, AppButton} from '@src/components';
+import { AppButton, Input, Title } from '@src/components';
 import mainStyles from '@src/constants/styles';
-import {useCollector} from '@src/store/useCollector';
-import {registerValidationSchema} from '@src/validations/CollectorValidationSchemas';
-import {Formik} from 'formik';
-import {ImageBackground, ScrollView, View} from 'react-native';
+import { useCollector } from '@src/store/useCollector';
+import { registerValidationSchema } from '@src/validations/CollectorValidationSchemas';
+import { Formik } from 'formik';
+import { ImageBackground, ScrollView, View } from 'react-native';
 import styles from './Register.styles';
 
 const Register = () => {
@@ -127,12 +127,6 @@ const Register = () => {
             )}
           </Formik>
         </ScrollView>
-        <AppButton
-          title="Next"
-          onPress={() => {
-            console.log(userInfo);
-          }}
-        />
       </View>
     </ImageBackground>
   );

@@ -10,7 +10,6 @@ import {
   ScrollView,
   View,
 } from 'react-native';
-import {useDispatch} from 'react-redux';
 import * as Yup from 'yup';
 import styles from './LogIn.styles';
 
@@ -22,7 +21,6 @@ const validationSchema = Yup.object({
 });
 
 const LogIn = ({navigation}) => {
-  const dispatch = useDispatch();
 
   // const login = async () => {
   //   console.log(userName);
