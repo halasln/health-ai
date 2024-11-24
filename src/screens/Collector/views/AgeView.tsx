@@ -1,4 +1,4 @@
-import {AppButton, Input, Title} from '@src/components';
+import {Input, Title} from '@src/components';
 import mainStyles from '@src/constants/styles';
 import {useCollector} from '@src/store/useCollector';
 import {ageValidationSchema} from '@src/validations/CollectorValidationSchemas';

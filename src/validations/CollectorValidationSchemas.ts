@@ -7,16 +7,18 @@ export const ageValidationSchema = Yup.object().shape({
     .integer('Age must be an integer'),
 });
 
-export const heightValidationSchema = Yup.object().shape({
+
+
+export const heightWeightValidationSchema = Yup.object().shape({
   height: Yup.number()
     .required('Enter your height')
     .positive('Height must be a positive number')
     .integer('Height must be an integer'),
   weight: Yup.number()
     .required('Enter your weight')
-    .positive('Weight must be a positive number')
-    .integer('Weight must be an integer'),
+    .positive('Weight must be a positive number'),
 });
+
 
 export const registerValidationSchema = Yup.object({
   firstName: Yup.string().required('Please enter your full name'),
