@@ -1,14 +1,20 @@
 import assets from '@src/assets';
 import {AppBar, SummaryCard, TodayGoalCard} from '@src/components';
 import {mainStyles} from '@src/constants';
+import {useUser} from '@src/hooks/useUser';
 import {useCollector} from '@src/store/useCollector';
-import * as axios from '@src/utils/axios';
 import {MainLayout, Text, View} from '@src/wrappers';
 import {useEffect} from 'react';
-import {ScrollView} from 'react-native';
+import {ActivityIndicator, ScrollView} from 'react-native';
 
 const Dashboard = () => {
   const {setInfo, data} = useCollector();
+
+  const {mutate, isLoading, isError, data: userData, error} = useUser();
+
+  useEffect(() => {
+    mutate();
+  }, []);
 
   const summary = [
     {
@@ -37,19 +43,15 @@ const Dashboard = () => {
     },
   ];
 
-  useEffect(() => {
-    console.log('gi', data);
-    let data2 = new FormData();
-    data2.append('userDara', data);
-    axios
-      .post('/', data2)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  });
+  if (isLoading)
+    return (
+      <View>
+        <ActivityIndicator size="large" color="#0000ff" />
+        <Text>Loading...</Text>
+      </View>
+    );
+
+  // if (error) return <Text>Error: {error.message}</Text>;
 
   return (
     <MainLayout>
@@ -57,8 +59,32 @@ const Dashboard = () => {
         <AppBar title="Dashboard" />
       </View>
 
+      {/* {userData && (
+        <View>
+          <Text>Name: {userData?.user?.first_name} {userData?.user?.last_name}</Text>
+          <Text>Email: {userData?.user?.email}</Text>
+          <Text>Age: {userData?.user?.age}</Text>
+          <Text>Height: {userData?.user?.height}</Text>
+          <Text>Weight: {userData?.user?.weight}</Text>
+          <Text>Goal Calories: {userData.goalCalories}</Text>
+          <Text>Liked Foods: {userData.likedFoods.join(', ')}</Text>
+          <Text>Disliked Foods: {userData.dislikedFoods.join(', ')}</Text>
+        </View>
+      )} */}
+      <View>
+        {/* <AppButton
+          onPress={handleSubmit}
+          disabled={isLoading}
+          title={isLoading ? 'Updating...' : 'Submit'}
+        />
+
+        {isError && <Text>Error: {error.message}</Text>}
+        {userData && <Text>User updated successfully!</Text>} */}
+      </View>
+
+      {/* <AppButton title={'send data'} onPress={() => sendData()} /> */}
       <ScrollView style={mainStyles.mt10}>
-        <TodayGoalCard />
+        <TodayGoalCard goalCalories={userData?.goalCalories} />
 
         {/* summary */}
         <Text style={mainStyles.mb10} bold>
@@ -81,3 +107,37 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+// const sendData = () => {
+
+//   console.log(userData);
+
+// let formData = new FormData();
+// formData.append('email', data?.email);
+// formData.append('age', data?.age);
+// formData.append('gender', data?.gender);
+// formData.append('height', data?.height);
+// formData.append('weight', data?.weight);
+// formData.append('goal', data?.goal);
+// formData.append('workout', data?.workout);
+// formData.append('dislikedFoods', data?.dislikedFoods);
+// formData.append('favoriteFoods', data?.favoriteFoods);
+// formData.append('allergies', data?.allergies);
+// formData.append('foodPractice', data?.foodPractice);
+
+// post('user/update-user', formData)
+//   .then(res => {
+//     console.log('Response Data:', res?.data); // This should log the entire response
+//     if (res?.data) {
+//       const {message, user, goalCalories, likedFoods, dislikedFoods} =
+//         res?.data;
+//       console.log('User Data:', user); // This should log user details
+//       console.log('Goal Calories:', goalCalories); // Log the predicted goal calories
+//       console.log('Liked Foods:', likedFoods); // Log liked foods
+//       console.log('Disliked Foods:', dislikedFoods); // Log disliked foods
+//     }
+//   })
+//   .catch(err => {
+//     console.error('Error:', err);
+//   });
+// };

@@ -6,36 +6,44 @@ import {View} from '@src/wrappers';
 import React, {useEffect, useState} from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
+const data2 = [
+  {
+    id: 1,
+    title: 'Sedentary',
+  },
+  {
+    id: 2,
+    title: 'Light ',
+  },
+  {
+    id: 3,
+    title: 'Active',
+  },
+  {
+    id: 4,
+    title: 'Very active',
+  },
+];
+
 const WorkoutView = () => {
   const {setInfo, data} = useCollector();
-  const [workout, setWorkout] = useState(data?.workout);
+
+  const [selectedWorkout, setSelectedWorkout] = useState(0);
+
+  const handleworkoutChange = (workoutId: number) => {
+    setSelectedWorkout(workoutId);
+    setInfo({workout: workoutId});
+    console.log('sseleectedq queue',workoutId);
+    
+  };
 
   useEffect(() => {
-    setInfo({workout: workout});
-  }, [workout]);
+    if (selectedWorkout !== null) {
+    console.log('sseleectedq selectedWorkout',selectedWorkout);
 
-  const data2 = [
-    {
-      id: 1,
-      title: 'Sedentary',
-    },
-    {
-      id: 2,
-      title: 'Light ',
-    },
-    {
-      id: 3,
-      title: 'Active',
-    },
-    {
-      id: 4,
-      title: 'Very active',
-    },
-  ];
-
-  const isSelected = item => {
-    return workout?.id == item.id;
-  };
+      setInfo({workout: selectedWorkout});
+    }
+  }, [selectedWorkout]);
 
   return (
     <View>
@@ -53,10 +61,12 @@ const WorkoutView = () => {
             style={{marginBottom: 16}}
             text={item.title}
             textStyle={{textDecorationLine: 'none'}}
-            iconStyle={{backgroundColor: isSelected(item) ? 'green' : 'white'}}
+            iconStyle={{
+              backgroundColor: data.workout == item.id ? 'green' : 'white',
+            }}
             onPress={isChecked => {
               if (isChecked) {
-                setWorkout(item);
+                handleworkoutChange(item.id);
               }
             }}
           />

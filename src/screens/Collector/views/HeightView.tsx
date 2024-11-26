@@ -40,9 +40,12 @@ const HeightView = () => {
           useEffect(() => {
             if (!errors.height && values?.height > 0) {
               setInfo({height: values?.height});
+        
             }
             if (!errors.weight && values?.weight > 0) {
               setInfo({weight: values?.weight});
+            
+
             }
           }, [values.height, values.weight, errors]);
 

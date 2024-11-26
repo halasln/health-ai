@@ -6,7 +6,9 @@ import {Text, View} from '@src/wrappers';
 import styles from './TodayGoalCard.styles';
 import mainStyles from '@src/constants/styles';
 
-const TodayGoalCard = () => {
+const TodayGoalCard = (goalCalories) => {
+  console.log(goalCalories.goalCalories);
+  
   const info = [
     {
       name: 'Fat',
@@ -34,7 +36,7 @@ const TodayGoalCard = () => {
         Today{"'"}s Goal
       </Text>
 
-      <Text right>1600 kcal</Text>
+      <Text right>{goalCalories.goalCalories} kcal</Text>
 
       <View style={[mainStyles.mt40, mainStyles.row]}>
         <View style={mainStyles.me20}>
@@ -81,7 +83,7 @@ const TodayGoalCard = () => {
             </View>
             <View style={[mainStyles.row, mainStyles.ms15]}>
               <Text small>{item?.score}</Text>
-              <Text small>/{item?.goal}g</Text>
+              <Text small>{item?.goal}g</Text>
             </View>
             <Text small style={mainStyles.ms15}>
               {item?.goal}g left

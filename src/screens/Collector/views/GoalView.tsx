@@ -1,18 +1,49 @@
-import {Title} from '@src/components';
+import { Title } from '@src/components';
 import mainStyles from '@src/constants/styles';
-import {FitnessGoalsRes, useFitnessGoals} from '@src/hooks/useFitnessGoals';
-import {useCollector} from '@src/store/useCollector';
-import {AppPressable, Text, View} from '@src/wrappers';
-import {ActivityIndicator, StyleSheet} from 'react-native';
+import { useCollector } from '@src/store/useCollector';
+import { AppPressable, Text, View } from '@src/wrappers';
+import { useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
+
 
 const GoalView = () => {
   const {setInfo, data} = useCollector();
-  const {data: fitnessGoals, isFetching} = useFitnessGoals();
+  const [selectedGoal, setSelectedGoal] = useState(0);
 
-  const chooseGoal = (goal: FitnessGoalsRes) => {
-    setInfo({goal: goal?.id});
-    console.log(data?.goal);
+  const handleGoalChange = (goalId:number) => {
+    setSelectedGoal(goalId);
+    setInfo({goal: goalId});
   };
+
+  useEffect(() => {
+    if (selectedGoal !== null) {
+
+      setInfo({goal: selectedGoal});
+    }
+  }, [selectedGoal]);
+
+  const fitnessGoals = [
+    {
+      id: 1,
+      title: 'Lose Weight',
+      subtitle: 'Lose weight by following a healthy diet and exercise routine.',
+      type: 'lose',
+    },
+    {
+      id: 2,
+      title: 'Gain Weight',
+      subtitle:
+        'Gain weight by staying consistent with a healthy diet and exercise routine.',
+      type: 'gain',
+    },
+    {
+      id: 3,
+      title: 'Maintain Weight',
+      subtitle:
+        'Maintain weight by following a healthy diet and exercise routine.',
+      type: 'stay',
+    },
+  ];
 
   return (
     <View>
@@ -22,30 +53,23 @@ const GoalView = () => {
       />
 
       <View style={mainStyles.mt20}>
-        {!isFetching ? (
-          fitnessGoals?.map(goal => {
-            return (
-              <AppPressable
-                style={[
-                  styles.goalcard,
-                  {
-                    borderWidth: data?.goal == goal?.id ? 1 : 0,
-                    borderColor: data?.goal == goal?.id ? 'green' : 'white',
-                  },
-                ]}
-                key={goal.id}
-                onPress={() => chooseGoal(goal)}>
-                <Text style={styles.title}>{goal.title}</Text>
-                <Text style={styles.subtitle}>{goal.subtitle}</Text>
-              </AppPressable>
-            );
-          })
-        ) : (
-          <View
-            style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-            <ActivityIndicator size="large" color="black" />
-          </View>
-        )}
+        {fitnessGoals?.map(goal => {
+          return (
+            <AppPressable
+              style={[
+                styles.goalcard,
+                {
+                  borderWidth: data?.goal == goal?.id ? 1 : 0,
+                  borderColor: data?.goal == goal?.id ? 'green' : 'white',
+                },
+              ]}
+              key={goal.id}
+              onPress={() => handleGoalChange(goal.id)}>
+              <Text style={styles.title}>{goal.title}</Text>
+              <Text style={styles.subtitle}>{goal.subtitle}</Text>
+            </AppPressable>
+          );
+        })}
       </View>
     </View>
   );

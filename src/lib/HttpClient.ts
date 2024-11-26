@@ -2,8 +2,8 @@ import { getItem } from '@src/utils/storage';
 import axios from 'axios';
 
 export const HttpClient = axios.create({
-  // baseURL: 'http://192.168.8.12:3500',
-  baseURL: 'https://healthai.the-xproject.com',
+  baseURL: 'http:/192.168.100.216:4200/',
+  // baseURL: 'https://healthai.the-xproject.com',
   timeout: 30000,
 });
 

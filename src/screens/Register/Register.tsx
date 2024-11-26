@@ -3,62 +3,69 @@ import assets from '@src/assets';
 import { AppButton, Input, Title } from '@src/components';
 import mainStyles from '@src/constants/styles';
 import { useCollector } from '@src/store/useCollector';
+import { post } from '@src/utils/axios';
 import { registerValidationSchema } from '@src/validations/CollectorValidationSchemas';
 import { Formik } from 'formik';
-import { ImageBackground, ScrollView, View } from 'react-native';
+import { ImageBackground, ScrollView, View, Alert } from 'react-native';
 import styles from './Register.styles';
 
 const Register = () => {
-  const {setInfo, data} = useCollector();
-
+  const { setInfo, data } = useCollector();
   const navigation = useNavigation();
 
   return (
     <ImageBackground
       source={assets.registerBg}
       style={mainStyles.screenNoPadding}>
-      <View style={[styles.register, {paddingBottom: 40}]}>
+      <View style={[styles.register, { paddingBottom: 40 }]}>
         <ScrollView>
           <Title
             title="Register Now"
             subtitle="Create your account"
             style={[mainStyles.mb10]}
-            titleStyle={[mainStyles.mb10, {marginTop: 70, color: '#fff'}]}
+            titleStyle={[mainStyles.mb10, { marginTop: 70, color: '#fff' }]}
           />
 
           <Formik
             initialValues={{
-              firstName: 'hela',
-              email: 'hela@gmail.com',
-              password: '123456',
-              confirmPassword: '123456',
+              firstName: '',
+              email: '',
+              password: '',
+              confirmPassword: '',
             }}
             validationSchema={registerValidationSchema}
             onSubmit={values => {
               console.log('Form Submitted:', values);
-              // let data = new FormData();
-              // data.append('fullName', values.firstName);
-              // data.append('email', values.email);
-              // data.append('password', values.password);
-              // console.log(data);
+              let data = new FormData();
+              data.append('fullName', values.firstName);
+              data.append('email', values.email);
+              data.append('password', values.password);
 
-              // post('auth/register', data)
-              //   .then(res => {
-              //     console.log(res.data?.user.first_name);
-              //     dispatch(
-              //       setInfo({
-              //         userName: res?.data?.user?.user_name,
-              //         email: res?.data?.user?.email,
-              //         firstName: res?.data?.user?.first_name,
-              //         lastName: res?.data?.user?.last_name,
-              //       }),
-              //     );
-              //     navigation.navigate('collector');
-              //   })
-              //   .catch(err => {
-              //     console.log(err);
-              //   });
-              navigation.navigate('collector');
+              // POST request to register user
+              post('auth/register', data)
+                .then(res => {
+                  console.log('Response from API:', res?.data);
+
+                  // Check if email already exists
+                  if (res?.data?.error && res?.data?.error?.message.includes('Email already exists')) {
+                    // Show an error message
+                    Alert.alert('Email already exists', 'Please use a different email address.');
+                  } else if (res?.data?.user) {
+                    // Save user data if registration is successful
+                    setInfo({
+                      username: res?.data?.user?.user_name,
+                      email: res?.data?.user?.email,
+                      firstName: res?.data?.user?.first_name,
+                      lastName: res?.data?.user?.last_name,
+                    });
+                    // Navigate to the next screen (e.g., 'collector')
+                    navigation.navigate('collector');
+                  }
+                })
+                .catch(err => {
+                  console.error(err);
+                  Alert.alert('Error', 'An error occurred while registering. Please try again.');
+                });
             }}>
             {({
               handleChange,

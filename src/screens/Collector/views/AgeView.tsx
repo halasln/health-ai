@@ -37,6 +37,7 @@ const AgeView = () => {
           useEffect(() => {
             if (!errors.age && values?.age > 0) {
               setInfo({age: values?.age});
+              
             }
           }, [values.age, errors.age]);
 

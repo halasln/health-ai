@@ -2,7 +2,9 @@ import axios from 'axios';
 import {I18nManager} from 'react-native';
 import { getItem} from './storage';
 
-export const apiLink = 'http:/192.168.100.20:3500/';
+export const apiLink = 'http:/192.168.100.216:4200/';
+// export const apiLink = 'https://healthai.the-xproject.com';
+
 export const apiLink2 = 'https://user-api-2u24875412.health.com/v5/';
 
 export const post = async (url, data = new FormData()) => {
