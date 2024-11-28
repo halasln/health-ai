@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 
 import {Text, View} from '@src/wrappers';
@@ -30,6 +30,7 @@ const TodayGoalCard = (goalCalories) => {
     },
   ];
 
+ 
   return (
     <View style={styles.todayGoalCard}>
       <Text bold center>
@@ -91,6 +92,7 @@ const TodayGoalCard = (goalCalories) => {
           </View>
         ))}
       </View>
+      
     </View>
   );
 };
