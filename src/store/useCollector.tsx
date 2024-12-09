@@ -11,7 +11,7 @@ const initialValues = {
   weight: null,
   age: null,
   workout: null,
-  allergies: [],
+  allergies: null,
   foodPractice: null,
   dislikedFoods: [],
   favoriteFoods: [],
@@ -43,7 +43,7 @@ interface InitialState {
   weight?: number | null;
   age?: number | null;
   workout?: number | null;
-  allergies?: number[];
+  allergies?: number | null;
   foodPractice?: number | null;
   dislikedFoods?: number[];
   favoriteFoods?: number[];

@@ -37,7 +37,7 @@ const Collector = ({navigation}) => {
       if (activeView < views.length - 1) {
         setActiveView(prevView => prevView + 1);
       } else {
-        navigation.navigate('home');
+        navigation.navigate('waiting');
       }
     } else {
       if (activeView > 0) {

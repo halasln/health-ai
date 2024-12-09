@@ -43,6 +43,8 @@ const WorkoutView = () => {
 
       setInfo({workout: selectedWorkout});
     }
+    console.log('sseleectedq queue',data);
+
   }, [selectedWorkout]);
 
   return (

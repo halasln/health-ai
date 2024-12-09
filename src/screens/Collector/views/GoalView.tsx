@@ -20,6 +20,9 @@ const GoalView = () => {
 
       setInfo({goal: selectedGoal});
     }
+
+
+  console.log('data',data);
   }, [selectedGoal]);
 
   const fitnessGoals = [

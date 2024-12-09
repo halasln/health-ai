@@ -7,6 +7,7 @@ export const useUser = () => {
   const {setInfo, data} = useCollector(); // Collect user data from the Zustand store
 
   const { user, setUserData }=useUserData()
+
   
   const formData = {
     email: data?.email,
@@ -17,7 +18,9 @@ export const useUser = () => {
     goal: data?.goal, // Example goal: 1 = "lose"
     workout: data?.workout, // Example workout: 1 = "Sedentary"
     dislikedFoods: data?.dislikedFoods, // Array of disliked food IDs
-    favoriteFoods: data?.favoriteFoods, // Array of liked food IDs
+    favoriteFoods: data?.favoriteFoods,
+    foodPractice:data?.foodPractice ,
+    allergies:data?.allergies
   };
 
   // Use useMutation to handle POST request

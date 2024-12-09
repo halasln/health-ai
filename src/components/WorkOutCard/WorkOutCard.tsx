@@ -1,18 +1,31 @@
+import React from "react";
 import { Icon } from "@src/components";
 import { AppPressable, Image, Text, View } from "@src/wrappers";
+import { StyleProp, ViewStyle, TextStyle, ImageSourcePropType } from "react-native";
 
 //styles
 import styles from "./WorkOutCard.styles";
 
-const WorkOutCard = ({
+interface WorkOutCardProps {
+  title: string;
+  onPress: () => void;
+  time?: number;
+  image?: ImageSourcePropType;
+  style?: StyleProp<ViewStyle>;
+  backgroundColor?: string;
+  textstyle?: StyleProp<TextStyle>;
+  opacity?: number;
+}
+
+const WorkOutCard: React.FC<WorkOutCardProps> = ({
   title,
   onPress,
   time,
   image,
   style,
-  backgroundColor,
+  backgroundColor = "#fff",
   textstyle,
-  opacity,
+  opacity = 1,
 }) => {
   return (
     <AppPressable
@@ -21,19 +34,30 @@ const WorkOutCard = ({
       style={[
         styles.container,
         style,
-        { backgroundColor: backgroundColor, opacity: opacity },
+        { backgroundColor, opacity },
       ]}
+      accessibilityLabel={`Workout card for ${title}`}
     >
-      <View style={[styles.details]}>
+      {/* Workout Details */}
+      <View style={styles.details}>
         <Text style={[styles.text, textstyle]}>{title}</Text>
-
-        <View style={[styles.duration]}>
-          <Icon name={"chevron-left"} color="#333" />
-          <Text style={[styles.time]}>{time} min</Text>
-        </View>
+        {time !== undefined && (
+          <View style={styles.duration}>
+            <Icon name="chevron-left" color="#333" />
+            <Text style={styles.time}>{time} min</Text>
+          </View>
+        )}
       </View>
 
-      <Image style={styles.image} source={image} resizeMode="contain" />
+      {/* Workout Image */}
+      {image && (
+        <Image
+          style={styles.image}
+          source={image}
+          resizeMode="contain"
+          accessibilityLabel={`${title} image`}
+        />
+      )}
     </AppPressable>
   );
 };

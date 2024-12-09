@@ -9,3 +9,5 @@ export {default as Workout} from './Workout/Workout';
 export {default as Meals} from './Meals/Meals';
 export {default as Rapport} from './Rapport/Rapport';
 export {default as Camera} from './Camera/Camera';
+export {default as WaitingScreen} from './WaitingScreen';
+export {default as MealLogger} from './MealLogger';

@@ -1,7 +1,6 @@
 import assets from '@src/assets';
 import {AppButton, Input, Title} from '@src/components';
 import mainStyles from '@src/constants/styles';
-import {setInfo} from '@src/redux/info';
 import {post} from '@src/utils/axios';
 import {Formik} from 'formik';
 import {
@@ -12,21 +11,21 @@ import {
 } from 'react-native';
 import * as Yup from 'yup';
 import styles from './LogIn.styles';
+import { useUserData } from '@src/store/useUserData';
 
 const validationSchema = Yup.object({
-  userName: Yup.string().required('Please enter your username'),
+  email: Yup.string()
+    .email('Invalid email format')
+    .required('Please enter your email'),
   password: Yup.string()
     .min(6, 'Password must be at least 6 characters')
     .required('Please enter your password'),
+
 });
 
 const LogIn = ({navigation}) => {
 
-  // const login = async () => {
-  //   console.log(userName);
-  // };
-  //  dispatch(setInfo({ userName: userName }));
-  //  navigation.navigate("collector");
+  const {  setUserData }=useUserData()
 
   return (
     <ImageBackground source={assets.loginBg} style={mainStyles.screenNoPadding}>
@@ -44,33 +43,25 @@ const LogIn = ({navigation}) => {
 
             <Formik
               initialValues={{
-                userName: '',
+                email: '',
                 password: '',
               }}
               validationSchema={validationSchema}
               onSubmit={values => {
                 console.log('Form Submitted:', values);
                 let data = new FormData();
-                data.append('username', values.userName);
+                data.append('email', values.email);
                 data.append('password', values.password);
                 console.log(data);
 
                 post('auth/login', data)
                   .then(res => {
-                    console.log(res.data.age);
-                    dispatch(
-                      setInfo({
-                        userName: res?.data?.user_name,
-                        email: res?.data?.email,
-                        firstName: res?.data?.first_name,
-                        lastName: res?.data?.last_name,
-                        gender: res?.data?.gender,
-                        height: res?.data?.height,
-                        age: res?.data?.age,
-                        weight: res?.data?.weight,
-                      }),
-                    );
-                    // navigation.navigate('collector');
+                    console.log('API Response:nakjsaks', res?.data);
+
+                    setUserData(res?.data);
+                
+                    console.log('User data set in Zustand:', res?.data);
+                    navigation.navigate('waiting');
                   })
                   .catch(err => {
                     console.log(err);
@@ -86,13 +77,13 @@ const LogIn = ({navigation}) => {
               }) => (
                 <>
                   <Input
-                    label="Username"
-                    value={values.userName}
-                    onChangeText={value => handleChange('userName')(value)}
-                    onBlur={handleBlur('userName')}
-                    resetInputState={() => handleChange('userName')('')}
+                    label="Email"
+                    value={values.email}
+                    onChangeText={value => handleChange('email')(value)}
+                    onBlur={handleBlur('email')}
+                    resetInputState={() => handleChange('email')('')}
                     resetable
-                    error={touched.userName && errors.userName}
+                    error={touched.email && errors.email}
                   />
 
                   <Input

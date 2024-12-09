@@ -12,17 +12,21 @@ const FoodPracticeView = () => {
   const [foodPractice, setFoodPractice] = useState(data?.foodPractice);
 
   useEffect(() => {
-    setInfo({foodPractice: foodPractice});
+    setInfo({foodPractice: foodPractice?.status});
+    console.log(foodPractice, 'foodPractice');
+    
   }, [foodPractice]);
 
   const data2 = [
     {
       id: 1,
       title: 'Vegetarian',
+      status:0
     },
     {
       id: 2,
       title: 'Non Vegetarian ',
+      status:1
     },
   ];
 

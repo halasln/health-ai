@@ -10,6 +10,8 @@ import {
   Camera,
   Register,
   LogIn,
+  WaitingScreen,
+  MealLogger,
 } from '@src/screens';
 
 const navigations = [
@@ -29,6 +31,12 @@ const navigations = [
     component: Register,
   },
   {
+    name: 'waiting',
+    label: 'waiting',
+    component:WaitingScreen
+    
+  },
+  {
     name: 'collector',
     label: 'collector',
     component: Collector,
@@ -37,6 +45,11 @@ const navigations = [
     name: 'home',
     label: 'home',
     component: Home,
+  },
+  {
+    name: 'mealLogger',
+    label: 'mealLogger',
+    component: MealLogger,
   },
 ];
 
@@ -47,6 +60,7 @@ export const bottomNavigations = [
     component: Dashboard,
     icon: 'home',
   },
+
   {
     name: 'Workout',
     label: 'Workout',

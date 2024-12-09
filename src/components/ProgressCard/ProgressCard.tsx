@@ -1,3 +1,7 @@
+
+
+
+
 import {Icon, ProgressBar} from '@src/components';
 import {mainStyles} from '@src/constants';
 import {useCollector} from '@src/store/useCollector';
@@ -5,11 +9,19 @@ import {AppPressable, Text, View} from '@src/wrappers';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './ProgressCard.styles';
 
-const ProgressCard = ({
+interface ProgressCardProps {
+  onBackPress: () => void;
+  onMainPress: () => void;
+  mainText?: string;
+  backIcon?: string;
+  progress: number;
+}
+
+const ProgressCard: React.FC<ProgressCardProps> = ({
   onBackPress,
   onMainPress,
-  mainText,
-  backIcon,
+  mainText = 'Next',
+  backIcon = 'chevron-left',
   progress,
 }) => {
   const {data, isDisabled} = useCollector();
@@ -22,26 +34,22 @@ const ProgressCard = ({
       style={styles.progressCard}>
       {/* info */}
       <View style={styles.info}>
-        <Text style={styles.title}>Your Jurney</Text>
-        <Text style={styles.progress}>
-          {parseInt(progress) ?? 0}% Completed
-        </Text>
+        <Text style={styles.title}>Your Journey</Text>
+        <Text style={styles.progress}> {parseInt(progress) ?? 0}% Completed</Text>
         <ProgressBar progress={progress} />
       </View>
 
       {/* controls */}
       <View style={mainStyles.row}>
         <AppPressable style={styles.backClick} onPress={onBackPress}>
-          <Icon name={backIcon ?? 'chevron-left'} color="#fff" />
+          <Icon name={backIcon} color="#fff" />
         </AppPressable>
-        {/* {!isDisabled && ( */}
         <AppPressable
           style={[styles.mainClick, {opacity: isDisabled ? 0.5 : 1}]}
-          onPress={isDisabled ? null : onMainPress}
+          onPress={isDisabled ? undefined : onMainPress}
           disabled={isDisabled}>
-          <Text style={styles.mainClickText}>{mainText ?? 'Next'}</Text>
+          <Text style={styles.mainClickText}>{mainText}</Text>
         </AppPressable>
-        {/* )} */}
       </View>
     </LinearGradient>
   );

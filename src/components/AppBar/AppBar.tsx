@@ -1,21 +1,31 @@
-import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-
-import {Text, View} from '@src/wrappers';
 import {Icon} from '@src/components';
+import {AppPressable, Text, View} from '@src/wrappers';
+import React from 'react';
 
 //styles
 import styles from './AppBar.styles';
+import { Pressable } from 'react-native';
 
-const AppBar = ({title, icon}) => {
+interface AppBarProps {
+  title: string;
+  icon?: string;
+  onPress?: () => void;
+}
+
+const AppBar: React.FC<AppBarProps> = ({title, icon,onPress}) => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.appBar}>
-      <Text bold left style={{fontSize: 25}}>
+      <Text bold left style={styles.title}>
         {title}
       </Text>
-      {icon && <Icon name={icon} color="#222" size={20} />}
+      {icon && (
+        <Pressable onPress={onPress}>
+          <Icon name={icon} color="#222" size={20} />
+        </Pressable>
+      )}
     </View>
   );
 };
