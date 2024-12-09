@@ -10,6 +10,8 @@ const Profile = () => {
   const {data} = useCollector();
   const {user, setUserData} = useUserData();
 
+  console.log('user',user);
+  
   return (
     <MainLayout>
       <ScrollView>
@@ -45,14 +47,14 @@ const Profile = () => {
               color: '#272727',
               fontSize: 25,
             }}>
-            {user.first_name + ' ' + user.last_name}
+            {user?.first_name + ' ' + user?.last_name}
           </Text>
           <Text
             style={{
               color: '#A1A1A1',
               fontSize: 16,
             }}>
-            {' ' + user.user_name}
+            {' ' + user?.user_name}
           </Text>
         </View>
 

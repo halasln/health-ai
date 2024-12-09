@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import {useFoodRecommendationd} from '@src/hooks/useFoodRecommendationd';
 import {useUser} from '@src/hooks/useUser';
 import {useWorkout} from '@src/hooks/useWorkout';
@@ -7,6 +7,8 @@ import {ActivityIndicator, StyleSheet, Text, View} from 'react-native';
 
 export default function WaitingScreen() {
   const navigation = useNavigation();
+  const route = useRoute();
+  const fromLogin = route.params?.fromLogin || false; // Check if from login
 
   const {
     mutate: fetchWorkout,
@@ -20,52 +22,54 @@ export default function WaitingScreen() {
     isError: mealsError,
     data: mealsData,
   } = useFoodRecommendationd();
-  // const {
-  //   mutate: fetchUser,
-  //   isPending: isUserLoading,
-  //   isError: userError,
-  //   data: userData,
-  // } = useUser();
+  const {
+    mutate: fetchUser,
+    isPending: isUserLoading,
+    isError: userError,
+    data: userData,
+  } = useUser();
 
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetchWorkout();
     fetchMeals();
-    // fetchUser();
-  }, []);
+    if (!fromLogin) {
+      fetchUser();
+    }
+  }, [fromLogin]);
 
   useEffect(() => {
-    const isLoading = isWorkoutLoading || isMealsLoading 
-    // || isUserLoading;
-    const hasError = workoutError || mealsError 
-    // || userError;
+    const isLoading =
+      isWorkoutLoading || isMealsLoading || (!fromLogin && isUserLoading);
+    const hasError =
+      workoutError || mealsError || (!fromLogin && userError);
 
     if (hasError) {
       setError('An error occurred while fetching data.');
     } else if (
       !isLoading &&
       workoutData &&
-      mealsData 
-      // &&
-      // userData
-    ){
+      mealsData &&
+      (fromLogin || userData)
+    ) {
       navigation.navigate('home');
     }
   }, [
     isWorkoutLoading,
     isMealsLoading,
-    // isUserLoading,
+    isUserLoading,
     workoutError,
     mealsError,
-    // userError,
+    userError,
     workoutData,
     mealsData,
-    // userData,
+    userData,
+    fromLogin,
   ]);
 
-  const isLoading = isWorkoutLoading || isMealsLoading
-  //  || isUserLoading;
+  const isLoading =
+    isWorkoutLoading || isMealsLoading || (!fromLogin && isUserLoading);
 
   if (isLoading) {
     return (
@@ -84,10 +88,7 @@ export default function WaitingScreen() {
     );
   }
 
-  if (
-    // !userData ||
-    
-    !workoutData || !mealsData) {
+  if (!workoutData || !mealsData || (!fromLogin && !userData)) {
     return (
       <View style={styles.container}>
         <Text>Preparing your data, please wait...</Text>
