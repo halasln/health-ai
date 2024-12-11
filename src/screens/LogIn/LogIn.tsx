@@ -61,7 +61,7 @@ const LogIn = ({navigation}) => {
                     setUserData(res?.data);
                 
                     console.log('User data set in Zustand:', res?.data);
-                    navigation.navigate('waiting');
+                    navigation.navigate('waiting', {fromLogin: true});
                   })
                   .catch(err => {
                     console.log(err);

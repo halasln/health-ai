@@ -113,7 +113,7 @@ const {user}=useUserData()
               <Text small>{item.goal}g</Text>
             </View>
             <Text small style={mainStyles.ms15}>
-              {item.goal - item.score}g left
+            {(item.goal - item.score).toFixed(2)}g left
             </Text>
           </View>
         ))}
